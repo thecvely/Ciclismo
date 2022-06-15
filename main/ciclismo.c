@@ -8,23 +8,13 @@
 #include "driver/i2c.h"
 
 
-static const char *TAG= "TASK";
-void vTaskCode( void * pvParameters )
-{
-
-ESP_LOGI(TAG, "EJECUCIÓN DE TAREA");
-  for( ;; )
-  {
-    ESP_LOGI(TAG, "EJECUCIÓN DE TAREA");  // Task code goes here.
-  }
-
-}
-
 typedef struct 
 {
     uint64_t count;
     uint64_t value;
 } timer_data_t;
+
+static const char *TAG= "TASK";
 
 
 static bool IRAM_ATTR eventMPUTimer(gptimer_handle_t timer, const gptimer_alarm_event_data_t *edata, void *user_ctx){
@@ -39,10 +29,11 @@ static bool IRAM_ATTR eventMPUTimer(gptimer_handle_t timer, const gptimer_alarm_
 
 }
 
-void timerSensor(void)
+void vTaskCode( void * pvParameters )
 {
 
-ESP_LOGI(TAG, "vOtherFunction");
+ESP_LOGI(TAG, "EJECUCIÓN DE TAREA");
+
 
 
 //1.- Creación de timer
@@ -57,7 +48,7 @@ ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &mputimer));
 //2.- Configurar alarma
 
 gptimer_alarm_config_t alarm_config={
-    .alarm_count=1000000,
+    .alarm_count=500000,
     .reload_count=0,
     .flags.auto_reload_on_alarm=true,
 };
@@ -80,6 +71,33 @@ ESP_LOGI(TAG, "Timer habilitado");
 
 //5.- Iniciar el timer
 ESP_ERROR_CHECK(gptimer_start(mputimer));
+
+
+timer_data_t timer_data;
+
+  for( ;; )
+  {
+    ESP_LOGI(TAG, "EJECUCIÓN DE TAREA");  // Task code goes here.
+    //vTaskDelay(500 / portTICK_PERIOD_MS);
+
+    if (xQueueReceive(queue, &timer_data, pdMS_TO_TICKS(5000))) {
+        ESP_LOGI(TAG, "Timer reloaded, count=%llu", timer_data.count);
+        ESP_LOGI(TAG, "Valor %llu", timer_data.value);
+    } else {
+        ESP_LOGW(TAG, "Missed one count event");
+    }
+
+
+
+  }
+
+}
+
+
+void timerSensor(void)
+{
+
+ESP_LOGI(TAG, "Función timerSensor");
 
 
 
