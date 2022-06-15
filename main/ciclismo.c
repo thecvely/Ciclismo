@@ -29,13 +29,12 @@ static bool IRAM_ATTR eventMPUTimer(gptimer_handle_t timer, const gptimer_alarm_
 
 }
 
-void vTaskCode( void * pvParameters )
+void vTaskTimer( void * pvParameters )
 {
 
+//*******************************************************************************
+//********************************CONFIGURACIÓN DE TIMER*************************
 ESP_LOGI(TAG, "EJECUCIÓN DE TAREA");
-
-
-
 //1.- Creación de timer
 gptimer_handle_t mputimer;
 gptimer_config_t timer_config={
@@ -44,16 +43,13 @@ gptimer_config_t timer_config={
     .resolution_hz=1000000,
 };
 ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &mputimer));
-
 //2.- Configurar alarma
-
 gptimer_alarm_config_t alarm_config={
     .alarm_count=500000,
     .reload_count=0,
     .flags.auto_reload_on_alarm=true,
 };
 ESP_ERROR_CHECK(gptimer_set_alarm_action(mputimer, &alarm_config));
-
 //3.- Registro de callbacks 
 QueueHandle_t queue=xQueueCreate(10, sizeof(timer_data_t));
 if (!queue){
@@ -64,16 +60,21 @@ gptimer_event_callbacks_t cbs={
     .on_alarm=eventMPUTimer,
 };
 ESP_ERROR_CHECK(gptimer_register_event_callbacks(mputimer, &cbs, queue));
-
 //4.- Habilitación de timer
 ESP_ERROR_CHECK(gptimer_enable(mputimer));
 ESP_LOGI(TAG, "Timer habilitado");
-
 //5.- Iniciar el timer
 ESP_ERROR_CHECK(gptimer_start(mputimer));
-
-
 timer_data_t timer_data;
+
+
+
+//*******************************************************************************
+//********************************CONFIGURACIÓN DE I2C_MPU*************************
+
+
+
+
 
   for( ;; )
   {
@@ -93,27 +94,16 @@ timer_data_t timer_data;
 
 }
 
-
-void timerSensor(void)
-{
-
-ESP_LOGI(TAG, "Función timerSensor");
-
-
-
-static uint8_t ucParameterToPass;
-TaskHandle_t xHandle = NULL;
-
-  xTaskCreate( vTaskCode, "NAME", 2048, &ucParameterToPass, tskIDLE_PRIORITY, &xHandle );
-  configASSERT( xHandle );
-
-ESP_LOGW(TAG, "FIN DE TAREA");
-}
-
 void app_main(void)
 {
 ESP_LOGI(TAG, "MUNDO");
 
-timerSensor();
+static uint8_t ucParameterToPass;
+TaskHandle_t xHandle = NULL;
+xTaskCreate( vTaskCode, "NAME", 2048, &ucParameterToPass, tskIDLE_PRIORITY, &xHandle );
+configASSERT( xHandle );
+
+ESP_LOGW(TAG, "FIN DE TAREA");
+
 
 }
