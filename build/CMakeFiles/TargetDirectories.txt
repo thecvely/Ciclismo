@@ -295,7 +295,6 @@
 /home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/vfs/CMakeFiles/install.dir
 /home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/esp_eth/CMakeFiles/install/strip.dir
 /home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/esp_eth/CMakeFiles/edit_cache.dir
-/home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/esp_eth/CMakeFiles/__idf_esp_eth.dir
 /home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/esp_eth/CMakeFiles/rebuild_cache.dir
 /home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/esp_eth/CMakeFiles/list_install_components.dir
 /home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/esp_eth/CMakeFiles/install/local.dir

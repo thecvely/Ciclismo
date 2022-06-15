@@ -22,7 +22,6 @@ $<TARGET_FILE:__idf_esp_common>
 $<TARGET_FILE:__idf_esp_timer>
 $<TARGET_FILE:__idf_app_trace>
 $<TARGET_FILE:__idf_vfs>
-$<TARGET_FILE:__idf_esp_eth>
 $<TARGET_FILE:__idf_esp_netif>
 $<TARGET_FILE:__idf_esp_event>
 $<TARGET_FILE:__idf_nvs_flash>

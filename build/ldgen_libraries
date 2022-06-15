@@ -22,7 +22,6 @@
 /home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/esp_timer/libesp_timer.a
 /home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/app_trace/libapp_trace.a
 /home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/vfs/libvfs.a
-/home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/esp_eth/libesp_eth.a
 /home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/esp_netif/libesp_netif.a
 /home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/esp_event/libesp_event.a
 /home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/nvs_flash/libnvs_flash.a

@@ -13,11 +13,11 @@
 #define I2C_TIMEOUT         1000        /* Tieempo en ms de timeout*/
 #define MPU_DIR             0x68        /* Dirección del esclavo */
 #define MPU_PWR_REG         0x6B        /* Dirección de administración del sensor */
-#define I2C_FREQ_HZ         100000      /*Frecuencia de reloj */
+#define I2C_FREQ_HZ         400000      /*Frecuencia de reloj */
 
 static const char *TAG_TIMER="TIMER";
 static const char *TAG_I2C = "I2C";
-float DT=2000;                          /* Tiempo de muestreo en us, fs(1KHz MPU6050)*/
+float DT=10000.000000;                          /* Tiempo de muestreo en us, fs(1KHz MPU6050)*/
 const float accScale    = 2.00000*9.81/32768; 
 const float gyroScale   = 250.00000/32768; 
 const float A=0.98000, B=0.02000;
@@ -115,6 +115,7 @@ gptimer_alarm_config_t alarm_config={
     .reload_count=0,
     .flags.auto_reload_on_alarm=true,
 };
+
 ESP_ERROR_CHECK(gptimer_set_alarm_action(mputimer, &alarm_config));
 //3.- Registro de callbacks 
 QueueHandle_t queue=xQueueCreate(10, sizeof(timer_data_t));
@@ -144,7 +145,7 @@ int16_t gi1[3]={0,0,0};
 int16_t ai1[3]={0,0,0};
 float gf1[3]={0.00,0.00,0.00};
 float af1[3]={0.00,0.00,0.00};
-float grados[6]={0.00,0.00,0.00,0.00,0.00,0.00};//Posisicón final 0-2(Aceleración | 3-5 Giroscopio)
+float grados[6]={0.000000,0.000000,0.000000,0.000000,0.000000,0.000000};//Posisicón final 0-2(Aceleración | 3-5 Giroscopio)
 
 
 ESP_ERROR_CHECK(i2c_master_init());
@@ -155,12 +156,12 @@ vTaskDelay(100 / portTICK_PERIOD_MS);
 
 
 
-
-  for(uint16_t t=0; ;t++)
+uint64_t cr=0, ciclos=0, cout=0;
+  for(; ;)
   {
     //ESP_LOGI(TAG_TIMER, "EJECUCIÓN DE TAREA");  // Task code goes here.
 
-    if (xQueueReceive(queue, &timer_data, pdMS_TO_TICKS(5000))) {
+    if (xQueueReceive(queue, &timer_data, pdMS_TO_TICKS(1000))) {
         //ESP_LOGI(TAG_TIMER, "Timer reloaded, count=%llu", timer_data.count);
         //ESP_LOGI(TAG_TIMER, "Valor %llu", timer_data.value);
 
@@ -181,25 +182,23 @@ vTaskDelay(100 / portTICK_PERIOD_MS);
         grados[1]=atan(af1[1]/sqrt(pow(af1[0], 2.0)+pow(af1[2],2)))*180/3.1416;
         grados[2]=atan(af1[2]/sqrt(pow(af1[1], 2.0)+pow(af1[0],2)))*180/3.1416;
         
-        grados[3]=(gf1[0]*DT)/1000000;
-        grados[4]=(gf1[1]*DT)/1000000;
-        grados[5]=(gf1[2]*DT)/1000000;
+        grados[3]+=(gf1[0]*DT)/1000000;
+        grados[4]+=(gf1[1]*DT)/1000000;
+        grados[5]+=(gf1[2]*DT)/1000000;
         
-
-
-        if(t==100){
+        //ESP_LOGI(TAG_I2C, "Datos= G [%.5f x] - [%.5f y] - [%.5f z] ** ciclos:%llu", grados[3], grados[4], grados[5],ciclos);
+        
+       if(ciclos==100){
             //ESP_LOGI(TAG_I2C, "Datos= A [%.5f x] - [%.5f y] - [%.5f z]", grados[0], grados[1], grados[2]);
-            ESP_LOGI(TAG_I2C, "Datos= G [%.5f x] - [%.5f y] - [%.5f z]", grados[3], grados[4], grados[5]);
-            t=0;
+            ESP_LOGI(TAG_I2C, "Datos= G [%.5f x] - [%.5f y] - [%.5f z] ***** ciclos:%llu | dt:%6.f |out:%llu", grados[3], grados[4], grados[5], ciclos, DT,cout);
+            ciclos=0;
+            cout++;
         }
+        ciclos++;
         
-
-    
     } else {
         ESP_LOGW(TAG_TIMER, "Missed one count event");
     }
-
-
 
   }
 
