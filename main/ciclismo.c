@@ -17,10 +17,11 @@
 
 static const char *TAG_TIMER="TIMER";
 static const char *TAG_I2C = "I2C";
-float DT=10000.000000;                          /* Tiempo de muestreo en us, fs(1KHz MPU6050)*/
+float DT=4000.000000;                          /* Tiempo de muestreo en us, fs(1KHz MPU6050)*/
 const float accScale    = 2.00000*9.81/32768; 
 const float gyroScale   = 250.00000/32768; 
-const float A=0.98000, B=0.02000;
+const float A=0.50000, B=0.50000;
+float offset[6]={0.0000000000, 0.0000000000, 0.0000000000, -0.0002029201, 0.0051225499, 0.0041498020};
 
 typedef struct 
 {
@@ -146,7 +147,9 @@ int16_t ai1[3]={0,0,0};
 float gf1[3]={0.00,0.00,0.00};
 float af1[3]={0.00,0.00,0.00};
 float grados[6]={0.000000,0.000000,0.000000,0.000000,0.000000,0.000000};//Posisicón final 0-2(Aceleración | 3-5 Giroscopio)
-
+float pos[6]={0.000000,0.000000,0.000000,0.000000,0.000000,0.000000};
+float test[6]={0.000000,0.000000,0.000000,0.000000,0.000000,0.000000};
+float prev[6]={0.000000,0.000000,0.000000,0.000000,0.000000,0.000000};
 
 ESP_ERROR_CHECK(i2c_master_init());
 ESP_LOGI(TAG_I2C, "I2C Inicializado");
@@ -182,15 +185,21 @@ uint64_t cr=0, ciclos=0, cout=0;
         grados[1]=atan(af1[1]/sqrt(pow(af1[0], 2.0)+pow(af1[2],2)))*180/3.1416;
         grados[2]=atan(af1[2]/sqrt(pow(af1[1], 2.0)+pow(af1[0],2)))*180/3.1416;
         
-        grados[3]+=(gf1[0]*DT)/1000000;
-        grados[4]+=(gf1[1]*DT)/1000000;
-        grados[5]+=(gf1[2]*DT)/1000000;
+        grados[3]+=gf1[0]*0.002-offset[3];
+        grados[4]+=gf1[1]*0.002-offset[4];
+        grados[5]+=gf1[2]*0.002-offset[5];
         
-        //ESP_LOGI(TAG_I2C, "Datos= G [%.5f x] - [%.5f y] - [%.5f z] ** ciclos:%llu", grados[3], grados[4], grados[5],ciclos);
-        
-       if(ciclos==100){
-            //ESP_LOGI(TAG_I2C, "Datos= A [%.5f x] - [%.5f y] - [%.5f z]", grados[0], grados[1], grados[2]);
-            ESP_LOGI(TAG_I2C, "Datos= G [%.5f x] - [%.5f y] - [%.5f z] ***** ciclos:%llu | dt:%6.f |out:%llu", grados[3], grados[4], grados[5], ciclos, DT,cout);
+        pos[0]=A*(pos[0]+grados[3])+B*grados[0];
+        pos[1]=A*(pos[1]+grados[4])+B*grados[1];
+        pos[2]=A*(pos[2]+grados[5])+B*grados[2];
+
+
+
+                
+       if(ciclos==250){
+            //ESP_LOGI(TAG_I2C, "Datos= A [%.5f x] - [%.5f y] - [%.5f z] ", pos[0], pos[1], pos[2]);
+            ESP_LOGI(TAG_I2C, "Datos= A [%.5f x] - [%.5f y] - [%.5f z] ", grados[0], grados[1], grados[2]);
+            ESP_LOGI(TAG_I2C, "Datos= G [%.5f x] - [%.5f y] - [%.5f z] ", grados[3], grados[4], grados[5]);
             ciclos=0;
             cout++;
         }
