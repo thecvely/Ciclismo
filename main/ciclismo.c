@@ -150,6 +150,12 @@ float gf2[3]={0.00,0.00,0.00};
 float af2[3]={0.00,0.00,0.00};
 float vg_pos2[3]={0.000000,0.000000,0.000000};
 float va_pos2[3]={0.000000,0.000000,0.000000};
+float ppunto=0.000000;
+float modulo[2]={0.000000,0.000000,0.000000};
+float angulo=0.000000;
+float coseno=0.000000;
+float cosxy=0.000000;
+float angxy=0.000000;
 
 
 
@@ -172,6 +178,9 @@ uint64_t ciclos=0, cout=0;
         /*Lectura de datos del giroscopio*/
         ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_1, 0x43, buffer_g1, 6));
         ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_2, 0x43, buffer_g2, 6));
+
+        //ESP_LOGI(TAG_I2C, "Valor de bufer 2: %X %X %X %X %X %X", buffer_g2[0], buffer_g2[1], buffer_g2[2], buffer_g2[3], buffer_g2[4], buffer_g2[5]);
+
         /* Lectura de datos del acelerómetro */
         ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_1, 0x3b, buffer_a1, 6));
         ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_2, 0x3b, buffer_a2, 6));
@@ -197,19 +206,40 @@ uint64_t ciclos=0, cout=0;
         vg_pos1[1]+=gf1[1]*0.002-offset[4];
         vg_pos1[2]+=gf1[2]*0.002-offset[5];
 
-        va_pos2[0]=atan(af2[0]/sqrt(pow(af2[1], 2.0)+pow(af2[2],2)))*180/3.1416;
-        va_pos2[1]=atan(af2[1]/sqrt(pow(af2[0], 2.0)+pow(af2[2],2)))*180/3.1416;
-        va_pos2[2]=atan(af2[2]/sqrt(pow(af2[1], 2.0)+pow(af2[0],2)))*180/3.1416;
+        va_pos2[0]=atan(af2[0]/sqrt(pow(af2[1], 2.0)+pow(af2[2],2)))*-180/3.1416;
+        va_pos2[1]=atan(af2[1]/sqrt(pow(af2[0], 2.0)+pow(af2[2],2)))*-180/3.1416;
+        va_pos2[2]=atan(af2[2]/sqrt(pow(af2[1], 2.0)+pow(af2[0],2)))*-180/3.1416;
+        
         vg_pos2[0]+=gf2[0]*0.002-offset[3];
         vg_pos2[1]+=gf2[1]*0.002-offset[4];
         vg_pos2[2]+=gf2[2]*0.002-offset[5];
 
 
+
+        ppunto=va_pos2[0]*va_pos1[0] + va_pos2[1]*va_pos1[1] + va_pos2[2]*va_pos1[2];
+        modulo[0]=sqrt(va_pos1[0]*va_pos1[0] + va_pos1[1]*va_pos1[1] + va_pos1[2]*va_pos1[2]);
+        modulo[1]=sqrt(va_pos2[0]*va_pos2[0] + va_pos2[1]*va_pos2[1] + va_pos2[2]*va_pos2[2]);
+
+        coseno=ppunto/(modulo[0]*modulo[1]);
+        
+        angulo=acos(coseno);
+
+        //cosxy=
+
+
+        if(coseno<0) {
+            angulo=angulo-180;
+        } 
+
+
+
+
        if(ciclos==250){
-            ESP_LOGI(TAG_I2C, "Datos= A1 [%.5f x] - [%.5f y] - [%.5f z] ", va_pos1[0], va_pos1[1], va_pos1[2]);
-            ESP_LOGI(TAG_I2C, "Datos= G1 [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos1[0], vg_pos1[1], vg_pos1[2]);
-            ESP_LOGI(TAG_I2C, "Datos= A2 [%.5f x] - [%.5f y] - [%.5f z] ", va_pos2[0], va_pos2[1], va_pos2[2]);
-            ESP_LOGI(TAG_I2C, "Datos= G2 [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos2[0], vg_pos2[1], vg_pos2[2]);
+            ESP_LOGI(TAG_I2C, "Vectores (%.5f %.5f %.5f). (%.5f %.5f %.5f)", va_pos1[0], va_pos1[1], va_pos1[2], va_pos2[0], va_pos2[1], va_pos2[2]);
+            //ESP_LOGI(TAG_I2C, "Datos= G1 [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos1[0], vg_pos1[1], vg_pos1[2]);
+            //ESP_LOGI(TAG_I2C, "Datos= A2 [%.5f x] - [%.5f y] - [%.5f z] ", va_pos2[0], va_pos2[1], va_pos2[2]);
+            ESP_LOGW(TAG_TIMER, "Valor de ángulo= %.5f | coseno %.5f | ppunto %.5f | modulo1 %.5f | modulo2 %.5f",angulo, coseno, ppunto, modulo[0], modulo[1]);
+            //ESP_LOGI(TAG_I2C, "Datos= G2 [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos2[0], vg_pos2[1], vg_pos2[2]);
             //ESP_LOGI(TAG_I2C, "Datos= G [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos1[3], vg_pos1[4], vg_pos1[5]);
             ciclos=0;
             cout++;
