@@ -11,7 +11,8 @@
 
 #define I2C_PORT            0
 #define I2C_TIMEOUT         1000        /* Tieempo en ms de timeout*/
-#define MPU_DIR             0x68        /* Dirección del esclavo */
+#define MPU_DIR_1           0x68        /* Dirección del esclavo */
+#define MPU_DIR_2           0x69        /* Dirección del esclavo */
 #define MPU_PWR_REG         0x6B        /* Dirección de administración del sensor */
 #define I2C_FREQ_HZ         400000      /*Frecuencia de reloj */
 
@@ -66,17 +67,17 @@ static esp_err_t i2c_master_init(void)
 
 
 /*Lectura de Registro en MPU */
-static esp_err_t mpu_register_read(uint8_t reg_addr, uint8_t *data, size_t len)
+static esp_err_t mpu_register_read(uint8_t mpu_dir, uint8_t reg_addr, uint8_t *data, size_t len)
 {
-    return i2c_master_write_read_device(I2C_PORT, MPU_DIR, &reg_addr, 1, data, len, I2C_TIMEOUT / portTICK_PERIOD_MS);
+    return i2c_master_write_read_device(I2C_PORT, mpu_dir, &reg_addr, 1, data, len, I2C_TIMEOUT / portTICK_PERIOD_MS);
 }
 
 /*Escritura de Registro en MPU */
-static esp_err_t mpu_register_write(uint8_t reg_addr, uint8_t data)
+static esp_err_t mpu_register_write(uint8_t mpu_dir, uint8_t reg_addr, uint8_t data)
 {
     int ret;
     uint8_t write_buf[2] = {reg_addr, data};
-    ret = i2c_master_write_to_device(I2C_PORT, MPU_DIR, write_buf, sizeof(write_buf), I2C_TIMEOUT / portTICK_PERIOD_MS);
+    ret = i2c_master_write_to_device(I2C_PORT, mpu_dir, write_buf, sizeof(write_buf), I2C_TIMEOUT / portTICK_PERIOD_MS);
     return ret;
 }
 
@@ -85,15 +86,6 @@ static esp_err_t mpu_register_write(uint8_t reg_addr, uint8_t data)
 
 
 
-
-
-static float getPosition(float ang_prev, float ang_giro, float ang_acel){
-float angulo=0;
-
-angulo=A*(ang_prev- ang_giro)+B*ang_acel;
-
-return A;
-}
 
 
 void vTaskTimer( void * pvParameters )
@@ -146,20 +138,29 @@ int16_t gi1[3]={0,0,0};
 int16_t ai1[3]={0,0,0};
 float gf1[3]={0.00,0.00,0.00};
 float af1[3]={0.00,0.00,0.00};
-float grados[6]={0.000000,0.000000,0.000000,0.000000,0.000000,0.000000};//Posisicón final 0-2(Aceleración | 3-5 Giroscopio)
-float pos[6]={0.000000,0.000000,0.000000,0.000000,0.000000,0.000000};
-float test[6]={0.000000,0.000000,0.000000,0.000000,0.000000,0.000000};
-float prev[6]={0.000000,0.000000,0.000000,0.000000,0.000000,0.000000};
+float vg_pos1[3]={0.000000,0.000000,0.000000};
+float va_pos1[3]={0.000000,0.000000,0.000000};
+
+
+uint8_t buffer_g2[6];
+uint8_t buffer_a2[6];
+int16_t gi2[3]={0,0,0};
+int16_t ai2[3]={0,0,0};
+float gf2[3]={0.00,0.00,0.00};
+float af2[3]={0.00,0.00,0.00};
+float vg_pos2[3]={0.000000,0.000000,0.000000};
+float va_pos2[3]={0.000000,0.000000,0.000000};
+
+
 
 ESP_ERROR_CHECK(i2c_master_init());
 ESP_LOGI(TAG_I2C, "I2C Inicializado");
-ESP_ERROR_CHECK(mpu_register_write(MPU_PWR_REG, 0));
+ESP_ERROR_CHECK(mpu_register_write(MPU_DIR_1, MPU_PWR_REG, 0));
+ESP_ERROR_CHECK(mpu_register_write(MPU_DIR_2, MPU_PWR_REG, 0));
 vTaskDelay(100 / portTICK_PERIOD_MS);
 
 
-
-
-uint64_t cr=0, ciclos=0, cout=0;
+uint64_t ciclos=0, cout=0;
   for(; ;)
   {
     //ESP_LOGI(TAG_TIMER, "EJECUCIÓN DE TAREA");  // Task code goes here.
@@ -169,37 +170,47 @@ uint64_t cr=0, ciclos=0, cout=0;
         //ESP_LOGI(TAG_TIMER, "Valor %llu", timer_data.value);
 
         /*Lectura de datos del giroscopio*/
-        ESP_ERROR_CHECK(mpu_register_read(0x43, buffer_g1, 6));
+        ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_1, 0x43, buffer_g1, 6));
+        ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_2, 0x43, buffer_g2, 6));
         /* Lectura de datos del acelerómetro */
-        ESP_ERROR_CHECK(mpu_register_read(0x3b, buffer_a1, 6));
+        ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_1, 0x3b, buffer_a1, 6));
+        ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_2, 0x3b, buffer_a2, 6));
 
         for (int i=0, j=0; i<3;i++){
         ai1[i]=buffer_a1[j]<<8 | buffer_a1[j+1];
         af1[i]=ai1[i]*accScale;
         gi1[i]=buffer_g1[j]<<8 | buffer_g1[j+1];
         gf1[i]=gi1[i]*gyroScale;
+        
+        ai2[i]=buffer_a2[j]<<8 | buffer_a2[j+1];
+        af2[i]=ai2[i]*accScale;
+        gi2[i]=buffer_g2[j]<<8 | buffer_g2[j+1];
+        gf2[i]=gi2[i]*gyroScale;
+        
         j+=2;
         }
 
-        grados[0]=atan(af1[0]/sqrt(pow(af1[1], 2.0)+pow(af1[2],2)))*180/3.1416;
-        grados[1]=atan(af1[1]/sqrt(pow(af1[0], 2.0)+pow(af1[2],2)))*180/3.1416;
-        grados[2]=atan(af1[2]/sqrt(pow(af1[1], 2.0)+pow(af1[0],2)))*180/3.1416;
-        
-        grados[3]+=gf1[0]*0.002-offset[3];
-        grados[4]+=gf1[1]*0.002-offset[4];
-        grados[5]+=gf1[2]*0.002-offset[5];
-        
-        pos[0]=A*(pos[0]+grados[3])+B*grados[0];
-        pos[1]=A*(pos[1]+grados[4])+B*grados[1];
-        pos[2]=A*(pos[2]+grados[5])+B*grados[2];
+        va_pos1[0]=atan(af1[0]/sqrt(pow(af1[1], 2.0)+pow(af1[2],2)))*180/3.1416;
+        va_pos1[1]=atan(af1[1]/sqrt(pow(af1[0], 2.0)+pow(af1[2],2)))*180/3.1416;
+        va_pos1[2]=atan(af1[2]/sqrt(pow(af1[1], 2.0)+pow(af1[0],2)))*180/3.1416;
+        vg_pos1[0]+=gf1[0]*0.002-offset[3];
+        vg_pos1[1]+=gf1[1]*0.002-offset[4];
+        vg_pos1[2]+=gf1[2]*0.002-offset[5];
+
+        va_pos2[0]=atan(af2[0]/sqrt(pow(af2[1], 2.0)+pow(af2[2],2)))*180/3.1416;
+        va_pos2[1]=atan(af2[1]/sqrt(pow(af2[0], 2.0)+pow(af2[2],2)))*180/3.1416;
+        va_pos2[2]=atan(af2[2]/sqrt(pow(af2[1], 2.0)+pow(af2[0],2)))*180/3.1416;
+        vg_pos2[0]+=gf2[0]*0.002-offset[3];
+        vg_pos2[1]+=gf2[1]*0.002-offset[4];
+        vg_pos2[2]+=gf2[2]*0.002-offset[5];
 
 
-
-                
        if(ciclos==250){
-            //ESP_LOGI(TAG_I2C, "Datos= A [%.5f x] - [%.5f y] - [%.5f z] ", pos[0], pos[1], pos[2]);
-            ESP_LOGI(TAG_I2C, "Datos= A [%.5f x] - [%.5f y] - [%.5f z] ", grados[0], grados[1], grados[2]);
-            ESP_LOGI(TAG_I2C, "Datos= G [%.5f x] - [%.5f y] - [%.5f z] ", grados[3], grados[4], grados[5]);
+            ESP_LOGI(TAG_I2C, "Datos= A1 [%.5f x] - [%.5f y] - [%.5f z] ", va_pos1[0], va_pos1[1], va_pos1[2]);
+            ESP_LOGI(TAG_I2C, "Datos= G1 [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos1[0], vg_pos1[1], vg_pos1[2]);
+            ESP_LOGI(TAG_I2C, "Datos= A2 [%.5f x] - [%.5f y] - [%.5f z] ", va_pos2[0], va_pos2[1], va_pos2[2]);
+            ESP_LOGI(TAG_I2C, "Datos= G2 [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos2[0], vg_pos2[1], vg_pos2[2]);
+            //ESP_LOGI(TAG_I2C, "Datos= G [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos1[3], vg_pos1[4], vg_pos1[5]);
             ciclos=0;
             cout++;
         }
