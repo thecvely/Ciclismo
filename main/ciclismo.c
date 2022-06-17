@@ -224,21 +224,27 @@ uint64_t ciclos=0, cout=0;
         
         angulo=acos(coseno);
 
-        //cosxy=
+        cosxy=(va_pos2[0]*va_pos1[0] + va_pos2[1]*va_pos1[1])/(sqrt(va_pos1[0]*va_pos1[0] + va_pos1[1]*va_pos1[1])*sqrt(va_pos2[0]*va_pos2[0] + va_pos2[1]*va_pos2[1]));
 
+        angxy=acos(cosxy);
 
         if(coseno<0) {
             angulo=angulo-180;
         } 
 
+        if(cosxy<0){
+            angxy=angxy-180;
+        }
+
 
 
 
        if(ciclos==250){
-            ESP_LOGI(TAG_I2C, "Vectores (%.5f %.5f %.5f). (%.5f %.5f %.5f)", va_pos1[0], va_pos1[1], va_pos1[2], va_pos2[0], va_pos2[1], va_pos2[2]);
+            //ESP_LOGI(TAG_I2C, "Vectores (%.5f %.5f %.5f). (%.5f %.5f %.5f)", va_pos1[0], va_pos1[1], va_pos1[2], va_pos2[0], va_pos2[1], va_pos2[2]);
             //ESP_LOGI(TAG_I2C, "Datos= G1 [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos1[0], vg_pos1[1], vg_pos1[2]);
             //ESP_LOGI(TAG_I2C, "Datos= A2 [%.5f x] - [%.5f y] - [%.5f z] ", va_pos2[0], va_pos2[1], va_pos2[2]);
             ESP_LOGW(TAG_TIMER, "Valor de ángulo= %.5f | coseno %.5f | ppunto %.5f | modulo1 %.5f | modulo2 %.5f",angulo, coseno, ppunto, modulo[0], modulo[1]);
+            ESP_LOGE(TAG_TIMER, "Valor de ángulo XY= %.5f | coseno %.5f ", angxy, cosxy);
             //ESP_LOGI(TAG_I2C, "Datos= G2 [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos2[0], vg_pos2[1], vg_pos2[2]);
             //ESP_LOGI(TAG_I2C, "Datos= G [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos1[3], vg_pos1[4], vg_pos1[5]);
             ciclos=0;
