@@ -8,6 +8,8 @@
 #include "driver/i2c.h"
 #include "math.h"
 
+#include "wifi_f/l_wifi.h"
+
 
 #define I2C_PORT            0
 #define I2C_TIMEOUT         1000        /* Tieempo en ms de timeout*/
@@ -262,7 +264,23 @@ uint64_t ciclos=0, cout=0;
 
 void app_main(void)
 {
-ESP_LOGI(TAG_TIMER, "MUNDO");
+ESP_LOGI(TAG_TIMER, "CICLISMO");
+
+    esp_err_t ret = nvs_flash_init();
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+      ESP_ERROR_CHECK(nvs_flash_erase());
+      ret = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(ret);
+
+    wifi_init_ap();
+
+
+//ESP_ERROR_CHECK(esp_netif_init());
+//ESP_ERROR_CHECK(esp_event_loop_create_default());
+
+//wifi_init_softap();
+//esp_wifi_set_ps(WIFI_PS_NONE);
 
 static uint8_t ucParameterToPass;
 TaskHandle_t xHandle = NULL;

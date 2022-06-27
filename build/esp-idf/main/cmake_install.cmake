@@ -1,4 +1,4 @@
-# Install script for directory: /home/fresvel/esp/Proyectos/ciclismo/main
+# Install script for directory: /home/fresvel/esp/Proyectos/Marce/ciclismo/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

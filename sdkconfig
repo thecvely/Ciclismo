@@ -291,8 +291,42 @@ CONFIG_PARTITION_TABLE_MD5=y
 #
 # Device Configuration
 #
+
+#
+# I2C
+#
 CONFIG_I2C_SCL=22
 CONFIG_I2C_SDA=21
+# end of I2C
+
+#
+# Wifi
+#
+
+#
+# Punto de Acceso
+#
+CONFIG_AP_SSID="Ciclismo"
+CONFIG_AP_PASSWORD="12345678"
+CONFIG_AP_CHANNEL=7
+CONFIG_AP_MAX_STA_CONN=4
+# end of Punto de Acceso
+
+#
+# Estación
+#
+CONFIG_STA_SSID="myssid"
+CONFIG_STA_PASSWORD="mypassword"
+CONFIG_STA_MAXIMUM_RETRY=5
+# end of Estación
+# end of Wifi
+
+#
+# MQTT
+#
+CONFIG_BROKER_URI="mqtts://mqtt.eclipse.org:8883"
+CONFIG_BROKER_BIN_SIZE_TO_SEND=20000
+# end of MQTT
 # end of Device Configuration
 
 #

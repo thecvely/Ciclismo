@@ -1,8 +1,8 @@
 {
     "project_name":       "bootloader",
     "project_path":       "/home/fresvel/esp/esp-idf/components/bootloader/subproject",
-    "build_dir":          "/home/fresvel/esp/Proyectos/ciclismo/build/bootloader",
-    "config_file":        "/home/fresvel/esp/Proyectos/ciclismo/sdkconfig",
+    "build_dir":          "/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader",
+    "config_file":        "/home/fresvel/esp/Proyectos/Marce/ciclismo/sdkconfig",
     "config_defaults":    "",
     "app_elf":            "bootloader.elf",
     "app_bin":            "bootloader.bin",

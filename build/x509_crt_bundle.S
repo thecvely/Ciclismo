@@ -1,4 +1,4 @@
-/* * Data converted from /home/fresvel/esp/Proyectos/ciclismo/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from /home/fresvel/esp/Proyectos/Marce/ciclismo/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

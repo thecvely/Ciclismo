@@ -3832,24 +3832,157 @@
     {
         "children": [
             {
-                "children": [],
+                "children": [
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "GPIO number for I2C Master clock line.",
+                        "id": "I2C_SCL",
+                        "name": "I2C_SCL",
+                        "range": null,
+                        "title": "SCL GPIO Num",
+                        "type": "int"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "GPIO number for I2C Master data line.",
+                        "id": "I2C_SDA",
+                        "name": "I2C_SDA",
+                        "range": null,
+                        "title": "SDA GPIO Num",
+                        "type": "int"
+                    }
+                ],
                 "depends_on": null,
-                "help": "GPIO number for I2C Master clock line.",
-                "id": "I2C_SCL",
-                "name": "I2C_SCL",
-                "range": null,
-                "title": "SCL GPIO Num",
-                "type": "int"
+                "id": "device-configuration-i2c",
+                "title": "I2C",
+                "type": "menu"
             },
             {
-                "children": [],
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": "SSID (network name) for the example to connect to.",
+                                "id": "AP_SSID",
+                                "name": "AP_SSID",
+                                "range": null,
+                                "title": "WiFi SSID",
+                                "type": "string"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": "WiFi password (WPA or WPA2) for the example to use.",
+                                "id": "AP_PASSWORD",
+                                "name": "AP_PASSWORD",
+                                "range": null,
+                                "title": "WiFi Password",
+                                "type": "string"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": "WiFi channel (network channel) for the example to use.",
+                                "id": "AP_CHANNEL",
+                                "name": "AP_CHANNEL",
+                                "range": [
+                                    1,
+                                    13
+                                ],
+                                "title": "WiFi Channel",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": "Max number of the STA connects to AP.",
+                                "id": "AP_MAX_STA_CONN",
+                                "name": "AP_MAX_STA_CONN",
+                                "range": null,
+                                "title": "Maximal STA connections",
+                                "type": "int"
+                            }
+                        ],
+                        "depends_on": null,
+                        "id": "device-configuration-wifi-punto-de-acceso",
+                        "title": "Punto de Acceso",
+                        "type": "menu"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": "SSID (network name) for the example to connect to.",
+                                "id": "STA_SSID",
+                                "name": "STA_SSID",
+                                "range": null,
+                                "title": "WiFi SSID",
+                                "type": "string"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": "WiFi password (WPA or WPA2) for the example to use.",
+                                "id": "STA_PASSWORD",
+                                "name": "STA_PASSWORD",
+                                "range": null,
+                                "title": "WiFi Password",
+                                "type": "string"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": "Set the Maximum retry to avoid station reconnecting to the AP unlimited when the AP is really inexistent.",
+                                "id": "STA_MAXIMUM_RETRY",
+                                "name": "STA_MAXIMUM_RETRY",
+                                "range": null,
+                                "title": "Maximum retry",
+                                "type": "int"
+                            }
+                        ],
+                        "depends_on": null,
+                        "id": "device-configuration-wifi-estaci\u00f3n",
+                        "title": "Estaci\u00f3n",
+                        "type": "menu"
+                    }
+                ],
                 "depends_on": null,
-                "help": "GPIO number for I2C Master data line.",
-                "id": "I2C_SDA",
-                "name": "I2C_SDA",
-                "range": null,
-                "title": "SDA GPIO Num",
-                "type": "int"
+                "id": "device-configuration-wifi",
+                "title": "Wifi",
+                "type": "menu"
+            },
+            {
+                "children": [
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "URL of an mqtt broker which this example connects to.",
+                        "id": "BROKER_URI",
+                        "name": "BROKER_URI",
+                        "range": null,
+                        "title": "Broker URL",
+                        "type": "string"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": null,
+                        "id": "BROKER_BIN_SIZE_TO_SEND",
+                        "name": "BROKER_BIN_SIZE_TO_SEND",
+                        "range": null,
+                        "title": null,
+                        "type": "int"
+                    }
+                ],
+                "depends_on": null,
+                "id": "device-configuration-mqtt",
+                "title": "MQTT",
+                "type": "menu"
             }
         ],
         "depends_on": null,

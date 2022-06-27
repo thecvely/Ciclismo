@@ -34,7 +34,7 @@ include CMakeFiles/rules.ninja
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -46,7 +46,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -90,7 +90,7 @@ build CMakeFiles/bootloader.elf.dir/project_elf_src_esp32.c.obj: C_COMPILER__boo
 
 build bootloader.elf: C_EXECUTABLE_LINKER__bootloader.2eelf_ CMakeFiles/bootloader.elf.dir/project_elf_src_esp32.c.obj | esp-idf/xtensa/libxtensa.a esp-idf/soc/libsoc.a esp-idf/micro-ecc/libmicro-ecc.a esp-idf/hal/libhal.a esp-idf/bootloader_support/libbootloader_support.a esp-idf/efuse/libefuse.a esp-idf/esp_system/libesp_system.a esp-idf/esp_hw_support/libesp_hw_support.a esp-idf/esp_common/libesp_common.a esp-idf/esp_rom/libesp_rom.a esp-idf/log/liblog.a esp-idf/main/libmain.a esp-idf/xtensa/libxtensa.a esp-idf/soc/libsoc.a esp-idf/micro-ecc/libmicro-ecc.a esp-idf/hal/libhal.a esp-idf/bootloader_support/libbootloader_support.a esp-idf/efuse/libefuse.a esp-idf/esp_system/libesp_system.a esp-idf/esp_hw_support/libesp_hw_support.a esp-idf/esp_common/libesp_common.a esp-idf/esp_rom/libesp_rom.a esp-idf/log/liblog.a esp-idf/xtensa/libxtensa.a esp-idf/soc/libsoc.a esp-idf/micro-ecc/libmicro-ecc.a esp-idf/hal/libhal.a esp-idf/bootloader_support/libbootloader_support.a esp-idf/efuse/libefuse.a esp-idf/esp_system/libesp_system.a esp-idf/esp_hw_support/libesp_hw_support.a esp-idf/esp_common/libesp_common.a esp-idf/esp_rom/libesp_rom.a esp-idf/log/liblog.a esp-idf/xtensa/libxtensa.a esp-idf/soc/libsoc.a esp-idf/micro-ecc/libmicro-ecc.a esp-idf/hal/libhal.a esp-idf/bootloader_support/libbootloader_support.a esp-idf/efuse/libefuse.a esp-idf/esp_system/libesp_system.a esp-idf/esp_hw_support/libesp_hw_support.a esp-idf/esp_common/libesp_common.a esp-idf/esp_rom/libesp_rom.a esp-idf/log/liblog.a esp-idf/xtensa/libxtensa.a esp-idf/soc/libsoc.a esp-idf/micro-ecc/libmicro-ecc.a esp-idf/hal/libhal.a esp-idf/bootloader_support/libbootloader_support.a esp-idf/efuse/libefuse.a esp-idf/esp_system/libesp_system.a esp-idf/esp_hw_support/libesp_hw_support.a esp-idf/esp_common/libesp_common.a esp-idf/esp_rom/libesp_rom.a esp-idf/log/liblog.a /home/fresvel/esp/esp-idf/components/xtensa/esp32/libxt_hal.a /home/fresvel/esp/esp-idf/components/soc/esp32/ld/esp32.peripherals.ld /home/fresvel/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.ld /home/fresvel/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.api.ld /home/fresvel/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.libgcc.ld /home/fresvel/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-funcs.ld /home/fresvel/esp/esp-idf/components/bootloader/subproject/main/ld/esp32/bootloader.ld /home/fresvel/esp/esp-idf/components/bootloader/subproject/main/ld/esp32/bootloader.rom.ld || _project_elf_src esp-idf/main/libmain.a esp-idf/xtensa/libxtensa.a
   FLAGS = -mlongcalls -Wno-frame-address
-  LINK_LIBRARIES = esp-idf/xtensa/libxtensa.a  esp-idf/soc/libsoc.a  esp-idf/micro-ecc/libmicro-ecc.a  esp-idf/hal/libhal.a  esp-idf/bootloader_support/libbootloader_support.a  esp-idf/efuse/libefuse.a  esp-idf/esp_system/libesp_system.a  esp-idf/esp_hw_support/libesp_hw_support.a  esp-idf/esp_common/libesp_common.a  esp-idf/esp_rom/libesp_rom.a  esp-idf/log/liblog.a  esp-idf/main/libmain.a  -Wl,--cref  -Wl,--defsym=IDF_TARGET_ESP32=0  -Wl,--Map="/home/fresvel/esp/Proyectos/ciclismo/build/bootloader/bootloader.map"  -fno-rtti  -fno-lto  -Wl,--gc-sections  -Wl,--warn-common  esp-idf/xtensa/libxtensa.a  esp-idf/soc/libsoc.a  esp-idf/micro-ecc/libmicro-ecc.a  esp-idf/hal/libhal.a  esp-idf/bootloader_support/libbootloader_support.a  esp-idf/efuse/libefuse.a  esp-idf/esp_system/libesp_system.a  esp-idf/esp_hw_support/libesp_hw_support.a  esp-idf/esp_common/libesp_common.a  esp-idf/esp_rom/libesp_rom.a  esp-idf/log/liblog.a  esp-idf/xtensa/libxtensa.a  esp-idf/soc/libsoc.a  esp-idf/micro-ecc/libmicro-ecc.a  esp-idf/hal/libhal.a  esp-idf/bootloader_support/libbootloader_support.a  esp-idf/efuse/libefuse.a  esp-idf/esp_system/libesp_system.a  esp-idf/esp_hw_support/libesp_hw_support.a  esp-idf/esp_common/libesp_common.a  esp-idf/esp_rom/libesp_rom.a  esp-idf/log/liblog.a  esp-idf/xtensa/libxtensa.a  esp-idf/soc/libsoc.a  esp-idf/micro-ecc/libmicro-ecc.a  esp-idf/hal/libhal.a  esp-idf/bootloader_support/libbootloader_support.a  esp-idf/efuse/libefuse.a  esp-idf/esp_system/libesp_system.a  esp-idf/esp_hw_support/libesp_hw_support.a  esp-idf/esp_common/libesp_common.a  esp-idf/esp_rom/libesp_rom.a  esp-idf/log/liblog.a  esp-idf/xtensa/libxtensa.a  esp-idf/soc/libsoc.a  esp-idf/micro-ecc/libmicro-ecc.a  esp-idf/hal/libhal.a  esp-idf/bootloader_support/libbootloader_support.a  esp-idf/efuse/libefuse.a  esp-idf/esp_system/libesp_system.a  esp-idf/esp_hw_support/libesp_hw_support.a  esp-idf/esp_common/libesp_common.a  esp-idf/esp_rom/libesp_rom.a  esp-idf/log/liblog.a  /home/fresvel/esp/esp-idf/components/xtensa/esp32/libxt_hal.a  -u esp_dport_access_reg_read  -L "/home/fresvel/esp/esp-idf/components/soc/esp32/ld"  -T esp32.peripherals.ld  -u __assert_func  -u abort  -u __ubsan_include  -L "/home/fresvel/esp/esp-idf/components/esp_rom/esp32/ld"  -T esp32.rom.ld  -T esp32.rom.api.ld  -T esp32.rom.libgcc.ld  -T esp32.rom.newlib-funcs.ld  -L "/home/fresvel/esp/esp-idf/components/bootloader/subproject/main/ld/esp32"  -T bootloader.ld  -T bootloader.rom.ld  -u bootloader_hooks_include
+  LINK_LIBRARIES = esp-idf/xtensa/libxtensa.a  esp-idf/soc/libsoc.a  esp-idf/micro-ecc/libmicro-ecc.a  esp-idf/hal/libhal.a  esp-idf/bootloader_support/libbootloader_support.a  esp-idf/efuse/libefuse.a  esp-idf/esp_system/libesp_system.a  esp-idf/esp_hw_support/libesp_hw_support.a  esp-idf/esp_common/libesp_common.a  esp-idf/esp_rom/libesp_rom.a  esp-idf/log/liblog.a  esp-idf/main/libmain.a  -Wl,--cref  -Wl,--defsym=IDF_TARGET_ESP32=0  -Wl,--Map="/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/bootloader.map"  -fno-rtti  -fno-lto  -Wl,--gc-sections  -Wl,--warn-common  esp-idf/xtensa/libxtensa.a  esp-idf/soc/libsoc.a  esp-idf/micro-ecc/libmicro-ecc.a  esp-idf/hal/libhal.a  esp-idf/bootloader_support/libbootloader_support.a  esp-idf/efuse/libefuse.a  esp-idf/esp_system/libesp_system.a  esp-idf/esp_hw_support/libesp_hw_support.a  esp-idf/esp_common/libesp_common.a  esp-idf/esp_rom/libesp_rom.a  esp-idf/log/liblog.a  esp-idf/xtensa/libxtensa.a  esp-idf/soc/libsoc.a  esp-idf/micro-ecc/libmicro-ecc.a  esp-idf/hal/libhal.a  esp-idf/bootloader_support/libbootloader_support.a  esp-idf/efuse/libefuse.a  esp-idf/esp_system/libesp_system.a  esp-idf/esp_hw_support/libesp_hw_support.a  esp-idf/esp_common/libesp_common.a  esp-idf/esp_rom/libesp_rom.a  esp-idf/log/liblog.a  esp-idf/xtensa/libxtensa.a  esp-idf/soc/libsoc.a  esp-idf/micro-ecc/libmicro-ecc.a  esp-idf/hal/libhal.a  esp-idf/bootloader_support/libbootloader_support.a  esp-idf/efuse/libefuse.a  esp-idf/esp_system/libesp_system.a  esp-idf/esp_hw_support/libesp_hw_support.a  esp-idf/esp_common/libesp_common.a  esp-idf/esp_rom/libesp_rom.a  esp-idf/log/liblog.a  esp-idf/xtensa/libxtensa.a  esp-idf/soc/libsoc.a  esp-idf/micro-ecc/libmicro-ecc.a  esp-idf/hal/libhal.a  esp-idf/bootloader_support/libbootloader_support.a  esp-idf/efuse/libefuse.a  esp-idf/esp_system/libesp_system.a  esp-idf/esp_hw_support/libesp_hw_support.a  esp-idf/esp_common/libesp_common.a  esp-idf/esp_rom/libesp_rom.a  esp-idf/log/liblog.a  /home/fresvel/esp/esp-idf/components/xtensa/esp32/libxt_hal.a  -u esp_dport_access_reg_read  -L "/home/fresvel/esp/esp-idf/components/soc/esp32/ld"  -T esp32.peripherals.ld  -u __assert_func  -u abort  -u __ubsan_include  -L "/home/fresvel/esp/esp-idf/components/esp_rom/esp32/ld"  -T esp32.rom.ld  -T esp32.rom.api.ld  -T esp32.rom.libgcc.ld  -T esp32.rom.newlib-funcs.ld  -L "/home/fresvel/esp/esp-idf/components/bootloader/subproject/main/ld/esp32"  -T bootloader.ld  -T bootloader.rom.ld  -u bootloader_hooks_include
   OBJECT_DIR = CMakeFiles/bootloader.elf.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -168,21 +168,21 @@ build app: phony CMakeFiles/app esp-idf/esptool_py/bootloader_check_size gen_pro
 # Custom command for CMakeFiles/size-components
 
 build CMakeFiles/size-components: CUSTOM_COMMAND bootloader.map
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/idf_size.py --archives /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/bootloader.map
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/idf_size.py --archives /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/bootloader.map
 
 
 #############################################
 # Custom command for CMakeFiles/size
 
 build CMakeFiles/size: CUSTOM_COMMAND bootloader.map
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/idf_size.py /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/bootloader.map
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/idf_size.py /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/bootloader.map
 
 
 #############################################
 # Custom command for project_elf_src_esp32.c
 
 build project_elf_src_esp32.c: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader && /usr/bin/cmake -E touch /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/project_elf_src_esp32.c
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader && /usr/bin/cmake -E touch /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/project_elf_src_esp32.c
   DESC = Generating project_elf_src_esp32.c
   restat = 1
 
@@ -197,7 +197,7 @@ build CMakeFiles/_project_elf_src: phony project_elf_src_esp32.c
 # Custom command for CMakeFiles/monitor
 
 build CMakeFiles/monitor: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/esp-idf/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/fresvel/esp/esp-idf -D "SERIAL_TOOL=/home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python;/home/fresvel/esp/esp-idf/tools/idf_monitor.py" -D "SERIAL_TOOL_ARGS=--target;esp32;;/home/fresvel/esp/Proyectos/ciclismo/build/bootloader/bootloader.elf" -D WORKING_DIRECTORY=/home/fresvel/esp/Proyectos/ciclismo/build/bootloader -P run_serial_tool.cmake
+  COMMAND = cd /home/fresvel/esp/esp-idf/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/fresvel/esp/esp-idf -D "SERIAL_TOOL=/home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python;/home/fresvel/esp/esp-idf/tools/idf_monitor.py" -D "SERIAL_TOOL_ARGS=--target;esp32;;/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/bootloader.elf" -D WORKING_DIRECTORY=/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader -P run_serial_tool.cmake
   pool = console
 
 
@@ -205,7 +205,7 @@ build CMakeFiles/monitor: CUSTOM_COMMAND
 # Custom command for CMakeFiles/uf2
 
 build CMakeFiles/uf2: CUSTOM_COMMAND bootloader || _project_elf_src bootloader.elf esp-idf/bootloader_support/libbootloader_support.a esp-idf/efuse/libefuse.a esp-idf/esp_common/libesp_common.a esp-idf/esp_hw_support/libesp_hw_support.a esp-idf/esp_rom/libesp_rom.a esp-idf/esp_system/libesp_system.a esp-idf/hal/libhal.a esp-idf/log/liblog.a esp-idf/main/libmain.a esp-idf/micro-ecc/libmicro-ecc.a esp-idf/soc/libsoc.a esp-idf/xtensa/libxtensa.a gen_project_binary
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/mkuf2.py write -o /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/uf2.bin --json /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/flasher_args.json --chip-id 0x1c5f21b0
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/mkuf2.py write -o /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/uf2.bin --json /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/flasher_args.json --chip-id 0x1c5f21b0
   pool = console
 
 
@@ -213,7 +213,7 @@ build CMakeFiles/uf2: CUSTOM_COMMAND bootloader || _project_elf_src bootloader.e
 # Custom command for CMakeFiles/confserver
 
 build CMakeFiles/confserver: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/config.env && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/confserver.py --env-file /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/config.env --kconfig /home/fresvel/esp/esp-idf/Kconfig --sdkconfig-rename /home/fresvel/esp/esp-idf/sdkconfig.rename --config /home/fresvel/esp/Proyectos/ciclismo/sdkconfig
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/config.env && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/confserver.py --env-file /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/config.env --kconfig /home/fresvel/esp/esp-idf/Kconfig --sdkconfig-rename /home/fresvel/esp/esp-idf/sdkconfig.rename --config /home/fresvel/esp/Proyectos/Marce/ciclismo/sdkconfig
   pool = console
 
 
@@ -221,7 +221,7 @@ build CMakeFiles/confserver: CUSTOM_COMMAND
 # Custom command for CMakeFiles/save-defconfig
 
 build CMakeFiles/save-defconfig: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/config.env && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/confgen.py --list-separator=semicolon --kconfig /home/fresvel/esp/esp-idf/Kconfig --sdkconfig-rename /home/fresvel/esp/esp-idf/sdkconfig.rename --config /home/fresvel/esp/Proyectos/ciclismo/sdkconfig --env-file /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/config.env --dont-write-deprecated --output savedefconfig /home/fresvel/esp/esp-idf/components/bootloader/subproject/sdkconfig.defaults
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/config.env && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/confgen.py --list-separator=semicolon --kconfig /home/fresvel/esp/esp-idf/Kconfig --sdkconfig-rename /home/fresvel/esp/esp-idf/sdkconfig.rename --config /home/fresvel/esp/Proyectos/Marce/ciclismo/sdkconfig --env-file /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/config.env --dont-write-deprecated --output savedefconfig /home/fresvel/esp/esp-idf/components/bootloader/subproject/sdkconfig.defaults
   pool = console
 
 
@@ -229,7 +229,7 @@ build CMakeFiles/save-defconfig: CUSTOM_COMMAND
 # Custom command for CMakeFiles/uf2-app
 
 build CMakeFiles/uf2-app: CUSTOM_COMMAND || _project_elf_src bootloader.elf esp-idf/bootloader_support/libbootloader_support.a esp-idf/efuse/libefuse.a esp-idf/esp_common/libesp_common.a esp-idf/esp_hw_support/libesp_hw_support.a esp-idf/esp_rom/libesp_rom.a esp-idf/esp_system/libesp_system.a esp-idf/hal/libhal.a esp-idf/log/liblog.a esp-idf/main/libmain.a esp-idf/micro-ecc/libmicro-ecc.a esp-idf/soc/libsoc.a esp-idf/xtensa/libxtensa.a gen_project_binary
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/mkuf2.py write -o /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/uf2-app.bin --json /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/flasher_args.json --chip-id 0x1c5f21b0 --bin app
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/mkuf2.py write -o /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/uf2-app.bin --json /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/flasher_args.json --chip-id 0x1c5f21b0 --bin app
   pool = console
 
 
@@ -237,7 +237,7 @@ build CMakeFiles/uf2-app: CUSTOM_COMMAND || _project_elf_src bootloader.elf esp-
 # Custom command for CMakeFiles/menuconfig
 
 build CMakeFiles/menuconfig: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/config.env && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/confgen.py --list-separator=semicolon --kconfig /home/fresvel/esp/esp-idf/Kconfig --sdkconfig-rename /home/fresvel/esp/esp-idf/sdkconfig.rename --config /home/fresvel/esp/Proyectos/ciclismo/sdkconfig --env-file /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/config.env --env IDF_TARGET=esp32 --env IDF_ENV_FPGA= --dont-write-deprecated --output config /home/fresvel/esp/Proyectos/ciclismo/sdkconfig && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/check_term.py && /usr/bin/cmake -E env COMPONENT_KCONFIGS_SOURCE_FILE=/home/fresvel/esp/Proyectos/ciclismo/build/bootloader/kconfigs.in COMPONENT_KCONFIGS_PROJBUILD_SOURCE_FILE=/home/fresvel/esp/Proyectos/ciclismo/build/bootloader/kconfigs_projbuild.in KCONFIG_CONFIG=/home/fresvel/esp/Proyectos/ciclismo/sdkconfig IDF_TARGET=esp32 IDF_ENV_FPGA= /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python -m menuconfig /home/fresvel/esp/esp-idf/Kconfig && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/confgen.py --list-separator=semicolon --kconfig /home/fresvel/esp/esp-idf/Kconfig --sdkconfig-rename /home/fresvel/esp/esp-idf/sdkconfig.rename --config /home/fresvel/esp/Proyectos/ciclismo/sdkconfig --env-file /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/config.env --env IDF_TARGET=esp32 --env IDF_ENV_FPGA= --output config /home/fresvel/esp/Proyectos/ciclismo/sdkconfig
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/prepare_kconfig_files.py --list-separator=semicolon --env-file /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/config.env && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/confgen.py --list-separator=semicolon --kconfig /home/fresvel/esp/esp-idf/Kconfig --sdkconfig-rename /home/fresvel/esp/esp-idf/sdkconfig.rename --config /home/fresvel/esp/Proyectos/Marce/ciclismo/sdkconfig --env-file /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/config.env --env IDF_TARGET=esp32 --env IDF_ENV_FPGA= --dont-write-deprecated --output config /home/fresvel/esp/Proyectos/Marce/ciclismo/sdkconfig && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/check_term.py && /usr/bin/cmake -E env COMPONENT_KCONFIGS_SOURCE_FILE=/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/kconfigs.in COMPONENT_KCONFIGS_PROJBUILD_SOURCE_FILE=/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/kconfigs_projbuild.in KCONFIG_CONFIG=/home/fresvel/esp/Proyectos/Marce/ciclismo/sdkconfig IDF_TARGET=esp32 IDF_ENV_FPGA= /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python -m menuconfig /home/fresvel/esp/esp-idf/Kconfig && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/kconfig_new/confgen.py --list-separator=semicolon --kconfig /home/fresvel/esp/esp-idf/Kconfig --sdkconfig-rename /home/fresvel/esp/esp-idf/sdkconfig.rename --config /home/fresvel/esp/Proyectos/Marce/ciclismo/sdkconfig --env-file /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/config.env --env IDF_TARGET=esp32 --env IDF_ENV_FPGA= --output config /home/fresvel/esp/Proyectos/Marce/ciclismo/sdkconfig
   pool = console
 
 
@@ -251,7 +251,7 @@ build CMakeFiles/gen_project_binary: phony .bin_timestamp || _project_elf_src bo
 # Custom command for .bin_timestamp
 
 build .bin_timestamp: CUSTOM_COMMAND bootloader.elf || _project_elf_src bootloader.elf esp-idf/bootloader_support/libbootloader_support.a esp-idf/efuse/libefuse.a esp-idf/esp_common/libesp_common.a esp-idf/esp_hw_support/libesp_hw_support.a esp-idf/esp_rom/libesp_rom.a esp-idf/esp_system/libesp_system.a esp-idf/hal/libhal.a esp-idf/log/liblog.a esp-idf/main/libmain.a esp-idf/micro-ecc/libmicro-ecc.a esp-idf/soc/libsoc.a esp-idf/xtensa/libxtensa.a
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/components/esptool_py/esptool/esptool.py --chip esp32 elf2image --flash_mode dio --flash_freq 40m --flash_size 4MB --dont-append-digest -o /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/bootloader.bin /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/bootloader.elf && /usr/bin/cmake -E echo "Generated /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/bootloader.bin" && /usr/bin/cmake -E md5sum /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/bootloader.bin > /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/.bin_timestamp
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/components/esptool_py/esptool/esptool.py --chip esp32 elf2image --flash_mode dio --flash_freq 40m --flash_size 4MB --dont-append-digest -o /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/bootloader.bin /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/bootloader.elf && /usr/bin/cmake -E echo "Generated /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/bootloader.bin" && /usr/bin/cmake -E md5sum /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/bootloader.bin > /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/.bin_timestamp
   DESC = Generating binary image from built executable
   restat = 1
 
@@ -268,7 +268,7 @@ build CMakeFiles/erase_flash: CUSTOM_COMMAND
 # Custom command for CMakeFiles/size-files
 
 build CMakeFiles/size-files: CUSTOM_COMMAND bootloader.map
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/idf_size.py --files /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/bootloader.map
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/tools/idf_size.py --files /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/bootloader.map
 
 
 #############################################
@@ -286,7 +286,7 @@ build CMakeFiles/app: phony || _project_elf_src bootloader.elf esp-idf/bootloade
 # Utility command for rebuild_cache
 
 build esp-idf/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -298,7 +298,7 @@ build esp-idf/rebuild_cache: phony esp-idf/CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build esp-idf/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -314,7 +314,7 @@ build esp-idf/edit_cache: phony esp-idf/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build esp-idf/xtensa/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/xtensa && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/xtensa && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -365,7 +365,7 @@ build esp-idf/xtensa/libxtensa.a: C_STATIC_LIBRARY_LINKER____idf_xtensa_ esp-idf
 # Utility command for edit_cache
 
 build esp-idf/xtensa/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/xtensa && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/xtensa && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -381,7 +381,7 @@ build esp-idf/xtensa/edit_cache: phony esp-idf/xtensa/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build esp-idf/newlib/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/newlib && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/newlib && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -393,7 +393,7 @@ build esp-idf/newlib/rebuild_cache: phony esp-idf/newlib/CMakeFiles/rebuild_cach
 # Utility command for edit_cache
 
 build esp-idf/newlib/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/newlib && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/newlib && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -409,7 +409,7 @@ build esp-idf/newlib/edit_cache: phony esp-idf/newlib/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build esp-idf/soc/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/soc && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/soc && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -600,7 +600,7 @@ build esp-idf/soc/libsoc.a: C_STATIC_LIBRARY_LINKER____idf_soc_ esp-idf/soc/CMak
 # Utility command for edit_cache
 
 build esp-idf/soc/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/soc && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/soc && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -616,7 +616,7 @@ build esp-idf/soc/edit_cache: phony esp-idf/soc/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build esp-idf/soc/esp32/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/soc/esp32 && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/soc/esp32 && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -628,7 +628,7 @@ build esp-idf/soc/esp32/rebuild_cache: phony esp-idf/soc/esp32/CMakeFiles/rebuil
 # Utility command for edit_cache
 
 build esp-idf/soc/esp32/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/soc/esp32 && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/soc/esp32 && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -644,7 +644,7 @@ build esp-idf/soc/esp32/edit_cache: phony esp-idf/soc/esp32/CMakeFiles/edit_cach
 # Utility command for rebuild_cache
 
 build esp-idf/micro-ecc/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/micro-ecc && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/micro-ecc && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -688,7 +688,7 @@ build esp-idf/micro-ecc/libmicro-ecc.a: C_STATIC_LIBRARY_LINKER____idf_micro-ecc
 # Utility command for edit_cache
 
 build esp-idf/micro-ecc/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/micro-ecc && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/micro-ecc && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -704,7 +704,7 @@ build esp-idf/micro-ecc/edit_cache: phony esp-idf/micro-ecc/CMakeFiles/edit_cach
 # Utility command for rebuild_cache
 
 build esp-idf/hal/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/hal && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/hal && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -783,7 +783,7 @@ build esp-idf/hal/libhal.a: C_STATIC_LIBRARY_LINKER____idf_hal_ esp-idf/hal/CMak
 # Utility command for edit_cache
 
 build esp-idf/hal/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/hal && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/hal && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -799,7 +799,7 @@ build esp-idf/hal/edit_cache: phony esp-idf/hal/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build esp-idf/spi_flash/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/spi_flash && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/spi_flash && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -811,7 +811,7 @@ build esp-idf/spi_flash/rebuild_cache: phony esp-idf/spi_flash/CMakeFiles/rebuil
 # Utility command for edit_cache
 
 build esp-idf/spi_flash/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/spi_flash && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/spi_flash && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -827,7 +827,7 @@ build esp-idf/spi_flash/edit_cache: phony esp-idf/spi_flash/CMakeFiles/edit_cach
 # Utility command for rebuild_cache
 
 build esp-idf/bootloader_support/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/bootloader_support && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/bootloader_support && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1025,7 +1025,7 @@ build esp-idf/bootloader_support/libbootloader_support.a: C_STATIC_LIBRARY_LINKE
 # Utility command for edit_cache
 
 build esp-idf/bootloader_support/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/bootloader_support && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/bootloader_support && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1041,7 +1041,7 @@ build esp-idf/bootloader_support/edit_cache: phony esp-idf/bootloader_support/CM
 # Utility command for edit_cache
 
 build esp-idf/efuse/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/efuse && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/efuse && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1058,7 +1058,7 @@ build esp-idf/efuse/efuse_test_table: phony esp-idf/efuse/CMakeFiles/efuse_test_
 # Utility command for rebuild_cache
 
 build esp-idf/efuse/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/efuse && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/efuse && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1180,14 +1180,14 @@ build esp-idf/efuse/show-efuse-table: phony esp-idf/efuse/CMakeFiles/show-efuse-
 # Custom command for esp-idf/efuse/CMakeFiles/efuse_test_table
 
 build esp-idf/efuse/CMakeFiles/efuse_test_table: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/efuse && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/components/efuse/efuse_table_gen.py /home/fresvel/esp/esp-idf/components/efuse/test/esp_efuse_test_table.csv -t esp32 --max_blk_len 192
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/efuse && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/components/efuse/efuse_table_gen.py /home/fresvel/esp/esp-idf/components/efuse/test/esp_efuse_test_table.csv -t esp32 --max_blk_len 192
 
 
 #############################################
 # Custom command for esp-idf/efuse/CMakeFiles/show_efuse_table
 
 build esp-idf/efuse/CMakeFiles/show_efuse_table: CUSTOM_COMMAND || esp-idf/efuse/show-efuse-table
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/efuse && /usr/bin/cmake -E echo
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/efuse && /usr/bin/cmake -E echo
   DESC = Warning: command "show_efuse_table" is deprecated. Have you wanted to run "show-efuse-table" instead?
 
 
@@ -1195,14 +1195,14 @@ build esp-idf/efuse/CMakeFiles/show_efuse_table: CUSTOM_COMMAND || esp-idf/efuse
 # Custom command for esp-idf/efuse/CMakeFiles/efuse-common-table
 
 build esp-idf/efuse/CMakeFiles/efuse-common-table: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/efuse && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/components/efuse/efuse_table_gen.py /home/fresvel/esp/esp-idf/components/efuse/esp32/esp_efuse_table.csv -t esp32 --max_blk_len 192
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/efuse && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/components/efuse/efuse_table_gen.py /home/fresvel/esp/esp-idf/components/efuse/esp32/esp_efuse_table.csv -t esp32 --max_blk_len 192
 
 
 #############################################
 # Custom command for esp-idf/efuse/CMakeFiles/efuse_custom_table
 
 build esp-idf/efuse/CMakeFiles/efuse_custom_table: CUSTOM_COMMAND || esp-idf/efuse/efuse-custom-table
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/efuse && /usr/bin/cmake -E echo
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/efuse && /usr/bin/cmake -E echo
   DESC = Warning: command "efuse_custom_table" is deprecated. Have you wanted to run "efuse-custom-table" instead?
 
 
@@ -1210,7 +1210,7 @@ build esp-idf/efuse/CMakeFiles/efuse_custom_table: CUSTOM_COMMAND || esp-idf/efu
 # Custom command for esp-idf/efuse/CMakeFiles/efuse_common_table
 
 build esp-idf/efuse/CMakeFiles/efuse_common_table: CUSTOM_COMMAND || esp-idf/efuse/efuse-common-table
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/efuse && /usr/bin/cmake -E echo
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/efuse && /usr/bin/cmake -E echo
   DESC = Warning: command "efuse_common_table" is deprecated. Have you wanted to run "efuse-common-table" instead?
 
 
@@ -1218,7 +1218,7 @@ build esp-idf/efuse/CMakeFiles/efuse_common_table: CUSTOM_COMMAND || esp-idf/efu
 # Custom command for esp-idf/efuse/CMakeFiles/show-efuse-table
 
 build esp-idf/efuse/CMakeFiles/show-efuse-table: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/efuse && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/components/efuse/efuse_table_gen.py /home/fresvel/esp/esp-idf/components/efuse/esp32/esp_efuse_table.csv -t esp32 --max_blk_len 192 --info
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/efuse && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/components/efuse/efuse_table_gen.py /home/fresvel/esp/esp-idf/components/efuse/esp32/esp_efuse_table.csv -t esp32 --max_blk_len 192 --info
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -1230,7 +1230,7 @@ build esp-idf/efuse/CMakeFiles/show-efuse-table: CUSTOM_COMMAND
 # Utility command for rebuild_cache
 
 build esp-idf/esp_system/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_system && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_system && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1274,7 +1274,7 @@ build esp-idf/esp_system/libesp_system.a: C_STATIC_LIBRARY_LINKER____idf_esp_sys
 # Utility command for edit_cache
 
 build esp-idf/esp_system/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_system && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_system && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1290,7 +1290,7 @@ build esp-idf/esp_system/edit_cache: phony esp-idf/esp_system/CMakeFiles/edit_ca
 # Utility command for rebuild_cache
 
 build esp-idf/esp_hw_support/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_hw_support && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_hw_support && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1397,7 +1397,7 @@ build esp-idf/esp_hw_support/libesp_hw_support.a: C_STATIC_LIBRARY_LINKER____idf
 # Utility command for edit_cache
 
 build esp-idf/esp_hw_support/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_hw_support && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_hw_support && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1413,7 +1413,7 @@ build esp-idf/esp_hw_support/edit_cache: phony esp-idf/esp_hw_support/CMakeFiles
 # Utility command for rebuild_cache
 
 build esp-idf/esp_hw_support/port/esp32/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_hw_support/port/esp32 && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_hw_support/port/esp32 && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1425,7 +1425,7 @@ build esp-idf/esp_hw_support/port/esp32/rebuild_cache: phony esp-idf/esp_hw_supp
 # Utility command for edit_cache
 
 build esp-idf/esp_hw_support/port/esp32/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_hw_support/port/esp32 && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_hw_support/port/esp32 && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1441,7 +1441,7 @@ build esp-idf/esp_hw_support/port/esp32/edit_cache: phony esp-idf/esp_hw_support
 # Utility command for rebuild_cache
 
 build esp-idf/esp_common/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_common && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_common && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1485,7 +1485,7 @@ build esp-idf/esp_common/libesp_common.a: C_STATIC_LIBRARY_LINKER____idf_esp_com
 # Utility command for edit_cache
 
 build esp-idf/esp_common/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_common && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_common && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1501,7 +1501,7 @@ build esp-idf/esp_common/edit_cache: phony esp-idf/esp_common/CMakeFiles/edit_ca
 # Utility command for rebuild_cache
 
 build esp-idf/esp_rom/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_rom && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_rom && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1587,7 +1587,7 @@ build esp-idf/esp_rom/libesp_rom.a: C_STATIC_LIBRARY_LINKER____idf_esp_rom_ esp-
 # Utility command for edit_cache
 
 build esp-idf/esp_rom/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_rom && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_rom && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1603,7 +1603,7 @@ build esp-idf/esp_rom/edit_cache: phony esp-idf/esp_rom/CMakeFiles/edit_cache.ut
 # Utility command for rebuild_cache
 
 build esp-idf/log/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/log && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/log && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1661,7 +1661,7 @@ build esp-idf/log/liblog.a: C_STATIC_LIBRARY_LINKER____idf_log_ esp-idf/log/CMak
 # Utility command for edit_cache
 
 build esp-idf/log/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/log && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/log && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1677,7 +1677,7 @@ build esp-idf/log/edit_cache: phony esp-idf/log/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build esp-idf/esptool_py/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esptool_py && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esptool_py && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1689,7 +1689,7 @@ build esp-idf/esptool_py/rebuild_cache: phony esp-idf/esptool_py/CMakeFiles/rebu
 # Utility command for edit_cache
 
 build esp-idf/esptool_py/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esptool_py && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esptool_py && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1706,7 +1706,7 @@ build esp-idf/esptool_py/bootloader_check_size: phony esp-idf/esptool_py/CMakeFi
 # Custom command for esp-idf/esptool_py/CMakeFiles/bootloader_check_size
 
 build esp-idf/esptool_py/CMakeFiles/bootloader_check_size: CUSTOM_COMMAND || _project_elf_src bootloader.elf esp-idf/bootloader_support/libbootloader_support.a esp-idf/efuse/libefuse.a esp-idf/esp_common/libesp_common.a esp-idf/esp_hw_support/libesp_hw_support.a esp-idf/esp_rom/libesp_rom.a esp-idf/esp_system/libesp_system.a esp-idf/hal/libhal.a esp-idf/log/liblog.a esp-idf/main/libmain.a esp-idf/micro-ecc/libmicro-ecc.a esp-idf/soc/libsoc.a esp-idf/xtensa/libxtensa.a gen_project_binary
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esptool_py && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/bootloader.bin
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esptool_py && /home/fresvel/.espressif/python_env/idf5.0_py3.9_env/bin/python /home/fresvel/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/bootloader.bin
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -1718,7 +1718,7 @@ build esp-idf/esptool_py/CMakeFiles/bootloader_check_size: CUSTOM_COMMAND || _pr
 # Utility command for rebuild_cache
 
 build esp-idf/partition_table/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/partition_table && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/partition_table && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1730,7 +1730,7 @@ build esp-idf/partition_table/rebuild_cache: phony esp-idf/partition_table/CMake
 # Utility command for edit_cache
 
 build esp-idf/partition_table/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/partition_table && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/partition_table && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1746,7 +1746,7 @@ build esp-idf/partition_table/edit_cache: phony esp-idf/partition_table/CMakeFil
 # Utility command for rebuild_cache
 
 build esp-idf/bootloader/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/bootloader && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/bootloader && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1758,7 +1758,7 @@ build esp-idf/bootloader/rebuild_cache: phony esp-idf/bootloader/CMakeFiles/rebu
 # Utility command for edit_cache
 
 build esp-idf/bootloader/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/bootloader && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/bootloader && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1774,7 +1774,7 @@ build esp-idf/bootloader/edit_cache: phony esp-idf/bootloader/CMakeFiles/edit_ca
 # Utility command for rebuild_cache
 
 build esp-idf/freertos/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/freertos && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/freertos && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1786,7 +1786,7 @@ build esp-idf/freertos/rebuild_cache: phony esp-idf/freertos/CMakeFiles/rebuild_
 # Utility command for edit_cache
 
 build esp-idf/freertos/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/freertos && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/freertos && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1802,7 +1802,7 @@ build esp-idf/freertos/edit_cache: phony esp-idf/freertos/CMakeFiles/edit_cache.
 # Utility command for rebuild_cache
 
 build esp-idf/main/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/main && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/main && /usr/bin/cmake --regenerate-during-build -S/home/fresvel/esp/esp-idf/components/bootloader/subproject -B/home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1846,7 +1846,7 @@ build esp-idf/main/libmain.a: C_STATIC_LIBRARY_LINKER____idf_main_ esp-idf/main/
 # Utility command for edit_cache
 
 build esp-idf/main/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/main && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/main && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1925,154 +1925,154 @@ build show_efuse_table: phony esp-idf/efuse/show_efuse_table
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader
 
 build all: phony bootloader.elf app esp-idf/all
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf
 
 build esp-idf/all: phony esp-idf/xtensa/all esp-idf/newlib/all esp-idf/soc/all esp-idf/micro-ecc/all esp-idf/hal/all esp-idf/spi_flash/all esp-idf/bootloader_support/all esp-idf/efuse/all esp-idf/esp_system/all esp-idf/esp_hw_support/all esp-idf/esp_common/all esp-idf/esp_rom/all esp-idf/log/all esp-idf/esptool_py/all esp-idf/partition_table/all esp-idf/bootloader/all esp-idf/freertos/all esp-idf/main/all
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/bootloader
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/bootloader
 
 build esp-idf/bootloader/all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/bootloader_support
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/bootloader_support
 
 build esp-idf/bootloader_support/all: phony esp-idf/bootloader_support/libbootloader_support.a
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/efuse
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/efuse
 
 build esp-idf/efuse/all: phony esp-idf/efuse/libefuse.a
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_common
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_common
 
 build esp-idf/esp_common/all: phony esp-idf/esp_common/libesp_common.a
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_hw_support
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_hw_support
 
 build esp-idf/esp_hw_support/all: phony esp-idf/esp_hw_support/libesp_hw_support.a esp-idf/esp_hw_support/port/esp32/all
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_hw_support/port/esp32
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_hw_support/port/esp32
 
 build esp-idf/esp_hw_support/port/esp32/all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_rom
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_rom
 
 build esp-idf/esp_rom/all: phony esp-idf/esp_rom/libesp_rom.a
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esp_system
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esp_system
 
 build esp-idf/esp_system/all: phony esp-idf/esp_system/libesp_system.a
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/esptool_py
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/esptool_py
 
 build esp-idf/esptool_py/all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/freertos
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/freertos
 
 build esp-idf/freertos/all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/hal
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/hal
 
 build esp-idf/hal/all: phony esp-idf/hal/libhal.a
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/log
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/log
 
 build esp-idf/log/all: phony esp-idf/log/liblog.a
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/main
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/main
 
 build esp-idf/main/all: phony esp-idf/main/libmain.a
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/micro-ecc
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/micro-ecc
 
 build esp-idf/micro-ecc/all: phony esp-idf/micro-ecc/libmicro-ecc.a
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/newlib
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/newlib
 
 build esp-idf/newlib/all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/partition_table
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/partition_table
 
 build esp-idf/partition_table/all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/soc
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/soc
 
 build esp-idf/soc/all: phony esp-idf/soc/libsoc.a esp-idf/soc/esp32/all
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/soc/esp32
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/soc/esp32
 
 build esp-idf/soc/esp32/all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/spi_flash
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/spi_flash
 
 build esp-idf/spi_flash/all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: /home/fresvel/esp/Proyectos/ciclismo/build/bootloader/esp-idf/xtensa
+# Folder: /home/fresvel/esp/Proyectos/Marce/ciclismo/build/bootloader/esp-idf/xtensa
 
 build esp-idf/xtensa/all: phony esp-idf/xtensa/libxtensa.a
 
@@ -2083,14 +2083,14 @@ build esp-idf/xtensa/all: phony esp-idf/xtensa/libxtensa.a
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/fresvel/esp/Proyectos/ciclismo/sdkconfig /home/fresvel/esp/esp-idf/.git/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/asio/asio/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bootloader/subproject/components/micro-ecc/micro-ecc/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32c2/esp32c2-bt-lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32c3_family/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32h2/esp32h2-bt-lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/host/nimble/nimble/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/cmock/CMock/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/esp_phy/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/esp_wifi/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/ieee802154/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/json/cJSON/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/lwip/lwip/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/mbedtls/mbedtls/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/mqtt/esp-mqtt/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/openthread/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/openthread/openthread/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/protobuf-c/protobuf-c/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/spiffs/spiffs/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/tinyusb/tinyusb/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/unity/unity/HEAD /home/fresvel/esp/esp-idf/.git/modules/examples/build_system/cmake/import_lib/main/lib/tinyxml2/HEAD /home/fresvel/esp/esp-idf/.git/modules/examples/peripherals/secure_element/atecc608_ecdsa/components/esp-cryptoauthlib/HEAD /home/fresvel/esp/esp-idf/.git/refs/heads/master /home/fresvel/esp/esp-idf/CMakeLists.txt /home/fresvel/esp/esp-idf/components/asio/asio/.git /home/fresvel/esp/esp-idf/components/bootloader/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader/project_include.cmake /home/fresvel/esp/esp-idf/components/bootloader/subproject/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader/subproject/components/micro-ecc/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader/subproject/components/micro-ecc/micro-ecc/.git /home/fresvel/esp/esp-idf/components/bootloader/subproject/main/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader_support/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32/.git /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32c2/esp32c2-bt-lib/.git /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32c3_family/.git /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32h2/esp32h2-bt-lib/.git /home/fresvel/esp/esp-idf/components/bt/host/nimble/nimble/.git /home/fresvel/esp/esp-idf/components/cmock/CMock/.git /home/fresvel/esp/esp-idf/components/efuse/CMakeLists.txt /home/fresvel/esp/esp-idf/components/efuse/esp32/sources.cmake /home/fresvel/esp/esp-idf/components/esp_common/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_common/project_include.cmake /home/fresvel/esp/esp-idf/components/esp_hw_support/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_hw_support/port/esp32/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_hw_support/project_include.cmake /home/fresvel/esp/esp-idf/components/esp_phy/lib/.git /home/fresvel/esp/esp-idf/components/esp_rom/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_system/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_wifi/lib/.git /home/fresvel/esp/esp-idf/components/esptool_py/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esptool_py/project_include.cmake /home/fresvel/esp/esp-idf/components/freertos/CMakeLists.txt /home/fresvel/esp/esp-idf/components/hal/CMakeLists.txt /home/fresvel/esp/esp-idf/components/ieee802154/lib/.git /home/fresvel/esp/esp-idf/components/json/cJSON/.git /home/fresvel/esp/esp-idf/components/log/CMakeLists.txt /home/fresvel/esp/esp-idf/components/lwip/lwip/.git /home/fresvel/esp/esp-idf/components/mbedtls/mbedtls/.git /home/fresvel/esp/esp-idf/components/mqtt/esp-mqtt/.git /home/fresvel/esp/esp-idf/components/newlib/CMakeLists.txt /home/fresvel/esp/esp-idf/components/openthread/lib/.git /home/fresvel/esp/esp-idf/components/openthread/openthread/.git /home/fresvel/esp/esp-idf/components/partition_table/CMakeLists.txt /home/fresvel/esp/esp-idf/components/partition_table/project_include.cmake /home/fresvel/esp/esp-idf/components/protobuf-c/protobuf-c/.git /home/fresvel/esp/esp-idf/components/soc/CMakeLists.txt /home/fresvel/esp/esp-idf/components/soc/esp32/CMakeLists.txt /home/fresvel/esp/esp-idf/components/spi_flash/CMakeLists.txt /home/fresvel/esp/esp-idf/components/spiffs/spiffs/.git /home/fresvel/esp/esp-idf/components/tinyusb/tinyusb/.git /home/fresvel/esp/esp-idf/components/unity/unity/.git /home/fresvel/esp/esp-idf/components/xtensa/CMakeLists.txt /home/fresvel/esp/esp-idf/components/xtensa/project_include.cmake /home/fresvel/esp/esp-idf/examples/build_system/cmake/import_lib/main/lib/tinyxml2/.git /home/fresvel/esp/esp-idf/examples/peripherals/secure_element/atecc608_ecdsa/components/esp-cryptoauthlib/.git /home/fresvel/esp/esp-idf/tools/cmake/build.cmake /home/fresvel/esp/esp-idf/tools/cmake/component.cmake /home/fresvel/esp/esp-idf/tools/cmake/crosstool_version_check.cmake /home/fresvel/esp/esp-idf/tools/cmake/depgraph.cmake /home/fresvel/esp/esp-idf/tools/cmake/dfu.cmake /home/fresvel/esp/esp-idf/tools/cmake/git_submodules.cmake /home/fresvel/esp/esp-idf/tools/cmake/idf.cmake /home/fresvel/esp/esp-idf/tools/cmake/kconfig.cmake /home/fresvel/esp/esp-idf/tools/cmake/ldgen.cmake /home/fresvel/esp/esp-idf/tools/cmake/project.cmake /home/fresvel/esp/esp-idf/tools/cmake/project_description.json.in /home/fresvel/esp/esp-idf/tools/cmake/targets.cmake /home/fresvel/esp/esp-idf/tools/cmake/third_party/GetGitRevisionDescription.cmake /home/fresvel/esp/esp-idf/tools/cmake/third_party/GetGitRevisionDescription.cmake.in /home/fresvel/esp/esp-idf/tools/cmake/toolchain-esp32.cmake /home/fresvel/esp/esp-idf/tools/cmake/uf2.cmake /home/fresvel/esp/esp-idf/tools/cmake/utilities.cmake /home/fresvel/esp/esp-idf/tools/cmake/version.cmake /home/fresvel/esp/esp-idf/tools/kconfig_new/confgen.py /home/fresvel/esp/esp-idf/tools/kconfig_new/config.env.in /usr/share/cmake/Modules/CMakeASMInformation.cmake /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckIncludeFileCXX.cmake /usr/share/cmake/Modules/CheckTypeSize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-ASM.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/ExternalProject.cmake /usr/share/cmake/Modules/FindGit.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/Platform/Generic.cmake CMakeCache.txt CMakeFiles/3.20.2/CMakeASMCompiler.cmake CMakeFiles/3.20.2/CMakeCCompiler.cmake CMakeFiles/3.20.2/CMakeCXXCompiler.cmake CMakeFiles/3.20.2/CMakeSystem.cmake CMakeFiles/git-data/grabRef.cmake config/sdkconfig.cmake config/sdkconfig.h
+build build.ninja: RERUN_CMAKE | /home/fresvel/esp/Proyectos/Marce/ciclismo/sdkconfig /home/fresvel/esp/esp-idf/.git/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/asio/asio/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bootloader/subproject/components/micro-ecc/micro-ecc/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32c2/esp32c2-bt-lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32c3_family/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32h2/esp32h2-bt-lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/host/nimble/nimble/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/cmock/CMock/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/esp_phy/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/esp_wifi/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/ieee802154/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/json/cJSON/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/lwip/lwip/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/mbedtls/mbedtls/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/mqtt/esp-mqtt/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/openthread/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/openthread/openthread/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/protobuf-c/protobuf-c/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/spiffs/spiffs/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/tinyusb/tinyusb/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/unity/unity/HEAD /home/fresvel/esp/esp-idf/.git/modules/examples/build_system/cmake/import_lib/main/lib/tinyxml2/HEAD /home/fresvel/esp/esp-idf/.git/modules/examples/peripherals/secure_element/atecc608_ecdsa/components/esp-cryptoauthlib/HEAD /home/fresvel/esp/esp-idf/.git/refs/heads/master /home/fresvel/esp/esp-idf/CMakeLists.txt /home/fresvel/esp/esp-idf/components/asio/asio/.git /home/fresvel/esp/esp-idf/components/bootloader/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader/project_include.cmake /home/fresvel/esp/esp-idf/components/bootloader/subproject/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader/subproject/components/micro-ecc/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader/subproject/components/micro-ecc/micro-ecc/.git /home/fresvel/esp/esp-idf/components/bootloader/subproject/main/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader_support/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32/.git /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32c2/esp32c2-bt-lib/.git /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32c3_family/.git /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32h2/esp32h2-bt-lib/.git /home/fresvel/esp/esp-idf/components/bt/host/nimble/nimble/.git /home/fresvel/esp/esp-idf/components/cmock/CMock/.git /home/fresvel/esp/esp-idf/components/efuse/CMakeLists.txt /home/fresvel/esp/esp-idf/components/efuse/esp32/sources.cmake /home/fresvel/esp/esp-idf/components/esp_common/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_common/project_include.cmake /home/fresvel/esp/esp-idf/components/esp_hw_support/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_hw_support/port/esp32/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_hw_support/project_include.cmake /home/fresvel/esp/esp-idf/components/esp_phy/lib/.git /home/fresvel/esp/esp-idf/components/esp_rom/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_system/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_wifi/lib/.git /home/fresvel/esp/esp-idf/components/esptool_py/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esptool_py/project_include.cmake /home/fresvel/esp/esp-idf/components/freertos/CMakeLists.txt /home/fresvel/esp/esp-idf/components/hal/CMakeLists.txt /home/fresvel/esp/esp-idf/components/ieee802154/lib/.git /home/fresvel/esp/esp-idf/components/json/cJSON/.git /home/fresvel/esp/esp-idf/components/log/CMakeLists.txt /home/fresvel/esp/esp-idf/components/lwip/lwip/.git /home/fresvel/esp/esp-idf/components/mbedtls/mbedtls/.git /home/fresvel/esp/esp-idf/components/mqtt/esp-mqtt/.git /home/fresvel/esp/esp-idf/components/newlib/CMakeLists.txt /home/fresvel/esp/esp-idf/components/openthread/lib/.git /home/fresvel/esp/esp-idf/components/openthread/openthread/.git /home/fresvel/esp/esp-idf/components/partition_table/CMakeLists.txt /home/fresvel/esp/esp-idf/components/partition_table/project_include.cmake /home/fresvel/esp/esp-idf/components/protobuf-c/protobuf-c/.git /home/fresvel/esp/esp-idf/components/soc/CMakeLists.txt /home/fresvel/esp/esp-idf/components/soc/esp32/CMakeLists.txt /home/fresvel/esp/esp-idf/components/spi_flash/CMakeLists.txt /home/fresvel/esp/esp-idf/components/spiffs/spiffs/.git /home/fresvel/esp/esp-idf/components/tinyusb/tinyusb/.git /home/fresvel/esp/esp-idf/components/unity/unity/.git /home/fresvel/esp/esp-idf/components/xtensa/CMakeLists.txt /home/fresvel/esp/esp-idf/components/xtensa/project_include.cmake /home/fresvel/esp/esp-idf/examples/build_system/cmake/import_lib/main/lib/tinyxml2/.git /home/fresvel/esp/esp-idf/examples/peripherals/secure_element/atecc608_ecdsa/components/esp-cryptoauthlib/.git /home/fresvel/esp/esp-idf/tools/cmake/build.cmake /home/fresvel/esp/esp-idf/tools/cmake/component.cmake /home/fresvel/esp/esp-idf/tools/cmake/crosstool_version_check.cmake /home/fresvel/esp/esp-idf/tools/cmake/depgraph.cmake /home/fresvel/esp/esp-idf/tools/cmake/dfu.cmake /home/fresvel/esp/esp-idf/tools/cmake/git_submodules.cmake /home/fresvel/esp/esp-idf/tools/cmake/idf.cmake /home/fresvel/esp/esp-idf/tools/cmake/kconfig.cmake /home/fresvel/esp/esp-idf/tools/cmake/ldgen.cmake /home/fresvel/esp/esp-idf/tools/cmake/project.cmake /home/fresvel/esp/esp-idf/tools/cmake/project_description.json.in /home/fresvel/esp/esp-idf/tools/cmake/targets.cmake /home/fresvel/esp/esp-idf/tools/cmake/third_party/GetGitRevisionDescription.cmake /home/fresvel/esp/esp-idf/tools/cmake/third_party/GetGitRevisionDescription.cmake.in /home/fresvel/esp/esp-idf/tools/cmake/toolchain-esp32.cmake /home/fresvel/esp/esp-idf/tools/cmake/uf2.cmake /home/fresvel/esp/esp-idf/tools/cmake/utilities.cmake /home/fresvel/esp/esp-idf/tools/cmake/version.cmake /home/fresvel/esp/esp-idf/tools/kconfig_new/confgen.py /home/fresvel/esp/esp-idf/tools/kconfig_new/config.env.in /usr/share/cmake/Modules/CMakeASMInformation.cmake /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckIncludeFileCXX.cmake /usr/share/cmake/Modules/CheckTypeSize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-ASM.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/ExternalProject.cmake /usr/share/cmake/Modules/FindGit.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/Platform/Generic.cmake CMakeCache.txt CMakeFiles/3.20.2/CMakeASMCompiler.cmake CMakeFiles/3.20.2/CMakeCCompiler.cmake CMakeFiles/3.20.2/CMakeCXXCompiler.cmake CMakeFiles/3.20.2/CMakeSystem.cmake CMakeFiles/git-data/grabRef.cmake config/sdkconfig.cmake config/sdkconfig.h
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/fresvel/esp/Proyectos/ciclismo/sdkconfig /home/fresvel/esp/esp-idf/.git/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/asio/asio/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bootloader/subproject/components/micro-ecc/micro-ecc/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32c2/esp32c2-bt-lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32c3_family/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32h2/esp32h2-bt-lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/host/nimble/nimble/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/cmock/CMock/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/esp_phy/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/esp_wifi/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/ieee802154/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/json/cJSON/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/lwip/lwip/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/mbedtls/mbedtls/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/mqtt/esp-mqtt/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/openthread/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/openthread/openthread/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/protobuf-c/protobuf-c/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/spiffs/spiffs/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/tinyusb/tinyusb/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/unity/unity/HEAD /home/fresvel/esp/esp-idf/.git/modules/examples/build_system/cmake/import_lib/main/lib/tinyxml2/HEAD /home/fresvel/esp/esp-idf/.git/modules/examples/peripherals/secure_element/atecc608_ecdsa/components/esp-cryptoauthlib/HEAD /home/fresvel/esp/esp-idf/.git/refs/heads/master /home/fresvel/esp/esp-idf/CMakeLists.txt /home/fresvel/esp/esp-idf/components/asio/asio/.git /home/fresvel/esp/esp-idf/components/bootloader/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader/project_include.cmake /home/fresvel/esp/esp-idf/components/bootloader/subproject/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader/subproject/components/micro-ecc/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader/subproject/components/micro-ecc/micro-ecc/.git /home/fresvel/esp/esp-idf/components/bootloader/subproject/main/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader_support/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32/.git /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32c2/esp32c2-bt-lib/.git /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32c3_family/.git /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32h2/esp32h2-bt-lib/.git /home/fresvel/esp/esp-idf/components/bt/host/nimble/nimble/.git /home/fresvel/esp/esp-idf/components/cmock/CMock/.git /home/fresvel/esp/esp-idf/components/efuse/CMakeLists.txt /home/fresvel/esp/esp-idf/components/efuse/esp32/sources.cmake /home/fresvel/esp/esp-idf/components/esp_common/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_common/project_include.cmake /home/fresvel/esp/esp-idf/components/esp_hw_support/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_hw_support/port/esp32/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_hw_support/project_include.cmake /home/fresvel/esp/esp-idf/components/esp_phy/lib/.git /home/fresvel/esp/esp-idf/components/esp_rom/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_system/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_wifi/lib/.git /home/fresvel/esp/esp-idf/components/esptool_py/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esptool_py/project_include.cmake /home/fresvel/esp/esp-idf/components/freertos/CMakeLists.txt /home/fresvel/esp/esp-idf/components/hal/CMakeLists.txt /home/fresvel/esp/esp-idf/components/ieee802154/lib/.git /home/fresvel/esp/esp-idf/components/json/cJSON/.git /home/fresvel/esp/esp-idf/components/log/CMakeLists.txt /home/fresvel/esp/esp-idf/components/lwip/lwip/.git /home/fresvel/esp/esp-idf/components/mbedtls/mbedtls/.git /home/fresvel/esp/esp-idf/components/mqtt/esp-mqtt/.git /home/fresvel/esp/esp-idf/components/newlib/CMakeLists.txt /home/fresvel/esp/esp-idf/components/openthread/lib/.git /home/fresvel/esp/esp-idf/components/openthread/openthread/.git /home/fresvel/esp/esp-idf/components/partition_table/CMakeLists.txt /home/fresvel/esp/esp-idf/components/partition_table/project_include.cmake /home/fresvel/esp/esp-idf/components/protobuf-c/protobuf-c/.git /home/fresvel/esp/esp-idf/components/soc/CMakeLists.txt /home/fresvel/esp/esp-idf/components/soc/esp32/CMakeLists.txt /home/fresvel/esp/esp-idf/components/spi_flash/CMakeLists.txt /home/fresvel/esp/esp-idf/components/spiffs/spiffs/.git /home/fresvel/esp/esp-idf/components/tinyusb/tinyusb/.git /home/fresvel/esp/esp-idf/components/unity/unity/.git /home/fresvel/esp/esp-idf/components/xtensa/CMakeLists.txt /home/fresvel/esp/esp-idf/components/xtensa/project_include.cmake /home/fresvel/esp/esp-idf/examples/build_system/cmake/import_lib/main/lib/tinyxml2/.git /home/fresvel/esp/esp-idf/examples/peripherals/secure_element/atecc608_ecdsa/components/esp-cryptoauthlib/.git /home/fresvel/esp/esp-idf/tools/cmake/build.cmake /home/fresvel/esp/esp-idf/tools/cmake/component.cmake /home/fresvel/esp/esp-idf/tools/cmake/crosstool_version_check.cmake /home/fresvel/esp/esp-idf/tools/cmake/depgraph.cmake /home/fresvel/esp/esp-idf/tools/cmake/dfu.cmake /home/fresvel/esp/esp-idf/tools/cmake/git_submodules.cmake /home/fresvel/esp/esp-idf/tools/cmake/idf.cmake /home/fresvel/esp/esp-idf/tools/cmake/kconfig.cmake /home/fresvel/esp/esp-idf/tools/cmake/ldgen.cmake /home/fresvel/esp/esp-idf/tools/cmake/project.cmake /home/fresvel/esp/esp-idf/tools/cmake/project_description.json.in /home/fresvel/esp/esp-idf/tools/cmake/targets.cmake /home/fresvel/esp/esp-idf/tools/cmake/third_party/GetGitRevisionDescription.cmake /home/fresvel/esp/esp-idf/tools/cmake/third_party/GetGitRevisionDescription.cmake.in /home/fresvel/esp/esp-idf/tools/cmake/toolchain-esp32.cmake /home/fresvel/esp/esp-idf/tools/cmake/uf2.cmake /home/fresvel/esp/esp-idf/tools/cmake/utilities.cmake /home/fresvel/esp/esp-idf/tools/cmake/version.cmake /home/fresvel/esp/esp-idf/tools/kconfig_new/confgen.py /home/fresvel/esp/esp-idf/tools/kconfig_new/config.env.in /usr/share/cmake/Modules/CMakeASMInformation.cmake /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckIncludeFileCXX.cmake /usr/share/cmake/Modules/CheckTypeSize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-ASM.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/ExternalProject.cmake /usr/share/cmake/Modules/FindGit.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/Platform/Generic.cmake CMakeCache.txt CMakeFiles/3.20.2/CMakeASMCompiler.cmake CMakeFiles/3.20.2/CMakeCCompiler.cmake CMakeFiles/3.20.2/CMakeCXXCompiler.cmake CMakeFiles/3.20.2/CMakeSystem.cmake CMakeFiles/git-data/grabRef.cmake config/sdkconfig.cmake config/sdkconfig.h: phony
+build /home/fresvel/esp/Proyectos/Marce/ciclismo/sdkconfig /home/fresvel/esp/esp-idf/.git/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/asio/asio/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bootloader/subproject/components/micro-ecc/micro-ecc/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32c2/esp32c2-bt-lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32c3_family/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/controller/lib_esp32h2/esp32h2-bt-lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/bt/host/nimble/nimble/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/cmock/CMock/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/esp_phy/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/esp_wifi/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/ieee802154/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/json/cJSON/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/lwip/lwip/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/mbedtls/mbedtls/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/mqtt/esp-mqtt/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/openthread/lib/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/openthread/openthread/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/protobuf-c/protobuf-c/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/spiffs/spiffs/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/tinyusb/tinyusb/HEAD /home/fresvel/esp/esp-idf/.git/modules/components/unity/unity/HEAD /home/fresvel/esp/esp-idf/.git/modules/examples/build_system/cmake/import_lib/main/lib/tinyxml2/HEAD /home/fresvel/esp/esp-idf/.git/modules/examples/peripherals/secure_element/atecc608_ecdsa/components/esp-cryptoauthlib/HEAD /home/fresvel/esp/esp-idf/.git/refs/heads/master /home/fresvel/esp/esp-idf/CMakeLists.txt /home/fresvel/esp/esp-idf/components/asio/asio/.git /home/fresvel/esp/esp-idf/components/bootloader/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader/project_include.cmake /home/fresvel/esp/esp-idf/components/bootloader/subproject/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader/subproject/components/micro-ecc/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader/subproject/components/micro-ecc/micro-ecc/.git /home/fresvel/esp/esp-idf/components/bootloader/subproject/main/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bootloader_support/CMakeLists.txt /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32/.git /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32c2/esp32c2-bt-lib/.git /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32c3_family/.git /home/fresvel/esp/esp-idf/components/bt/controller/lib_esp32h2/esp32h2-bt-lib/.git /home/fresvel/esp/esp-idf/components/bt/host/nimble/nimble/.git /home/fresvel/esp/esp-idf/components/cmock/CMock/.git /home/fresvel/esp/esp-idf/components/efuse/CMakeLists.txt /home/fresvel/esp/esp-idf/components/efuse/esp32/sources.cmake /home/fresvel/esp/esp-idf/components/esp_common/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_common/project_include.cmake /home/fresvel/esp/esp-idf/components/esp_hw_support/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_hw_support/port/esp32/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_hw_support/project_include.cmake /home/fresvel/esp/esp-idf/components/esp_phy/lib/.git /home/fresvel/esp/esp-idf/components/esp_rom/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_system/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esp_wifi/lib/.git /home/fresvel/esp/esp-idf/components/esptool_py/CMakeLists.txt /home/fresvel/esp/esp-idf/components/esptool_py/project_include.cmake /home/fresvel/esp/esp-idf/components/freertos/CMakeLists.txt /home/fresvel/esp/esp-idf/components/hal/CMakeLists.txt /home/fresvel/esp/esp-idf/components/ieee802154/lib/.git /home/fresvel/esp/esp-idf/components/json/cJSON/.git /home/fresvel/esp/esp-idf/components/log/CMakeLists.txt /home/fresvel/esp/esp-idf/components/lwip/lwip/.git /home/fresvel/esp/esp-idf/components/mbedtls/mbedtls/.git /home/fresvel/esp/esp-idf/components/mqtt/esp-mqtt/.git /home/fresvel/esp/esp-idf/components/newlib/CMakeLists.txt /home/fresvel/esp/esp-idf/components/openthread/lib/.git /home/fresvel/esp/esp-idf/components/openthread/openthread/.git /home/fresvel/esp/esp-idf/components/partition_table/CMakeLists.txt /home/fresvel/esp/esp-idf/components/partition_table/project_include.cmake /home/fresvel/esp/esp-idf/components/protobuf-c/protobuf-c/.git /home/fresvel/esp/esp-idf/components/soc/CMakeLists.txt /home/fresvel/esp/esp-idf/components/soc/esp32/CMakeLists.txt /home/fresvel/esp/esp-idf/components/spi_flash/CMakeLists.txt /home/fresvel/esp/esp-idf/components/spiffs/spiffs/.git /home/fresvel/esp/esp-idf/components/tinyusb/tinyusb/.git /home/fresvel/esp/esp-idf/components/unity/unity/.git /home/fresvel/esp/esp-idf/components/xtensa/CMakeLists.txt /home/fresvel/esp/esp-idf/components/xtensa/project_include.cmake /home/fresvel/esp/esp-idf/examples/build_system/cmake/import_lib/main/lib/tinyxml2/.git /home/fresvel/esp/esp-idf/examples/peripherals/secure_element/atecc608_ecdsa/components/esp-cryptoauthlib/.git /home/fresvel/esp/esp-idf/tools/cmake/build.cmake /home/fresvel/esp/esp-idf/tools/cmake/component.cmake /home/fresvel/esp/esp-idf/tools/cmake/crosstool_version_check.cmake /home/fresvel/esp/esp-idf/tools/cmake/depgraph.cmake /home/fresvel/esp/esp-idf/tools/cmake/dfu.cmake /home/fresvel/esp/esp-idf/tools/cmake/git_submodules.cmake /home/fresvel/esp/esp-idf/tools/cmake/idf.cmake /home/fresvel/esp/esp-idf/tools/cmake/kconfig.cmake /home/fresvel/esp/esp-idf/tools/cmake/ldgen.cmake /home/fresvel/esp/esp-idf/tools/cmake/project.cmake /home/fresvel/esp/esp-idf/tools/cmake/project_description.json.in /home/fresvel/esp/esp-idf/tools/cmake/targets.cmake /home/fresvel/esp/esp-idf/tools/cmake/third_party/GetGitRevisionDescription.cmake /home/fresvel/esp/esp-idf/tools/cmake/third_party/GetGitRevisionDescription.cmake.in /home/fresvel/esp/esp-idf/tools/cmake/toolchain-esp32.cmake /home/fresvel/esp/esp-idf/tools/cmake/uf2.cmake /home/fresvel/esp/esp-idf/tools/cmake/utilities.cmake /home/fresvel/esp/esp-idf/tools/cmake/version.cmake /home/fresvel/esp/esp-idf/tools/kconfig_new/confgen.py /home/fresvel/esp/esp-idf/tools/kconfig_new/config.env.in /usr/share/cmake/Modules/CMakeASMInformation.cmake /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckIncludeFileCXX.cmake /usr/share/cmake/Modules/CheckTypeSize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-ASM.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/ExternalProject.cmake /usr/share/cmake/Modules/FindGit.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/Platform/Generic.cmake CMakeCache.txt CMakeFiles/3.20.2/CMakeASMCompiler.cmake CMakeFiles/3.20.2/CMakeCCompiler.cmake CMakeFiles/3.20.2/CMakeCXXCompiler.cmake CMakeFiles/3.20.2/CMakeSystem.cmake CMakeFiles/git-data/grabRef.cmake config/sdkconfig.cmake config/sdkconfig.h: phony
 
 
 #############################################
