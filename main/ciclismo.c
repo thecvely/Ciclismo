@@ -3,13 +3,14 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
-#include "driver/gptimer.h"
-#include "esp_log.h"
 #include "driver/i2c.h"
+
 #include "math.h"
+#include "driver/gptimer.h"
+#include "driver/i2c.h"
+
 
 #include "wifi_f/l_wifi.h"
-
 
 #define I2C_PORT            0
 #define I2C_TIMEOUT         1000        /* Tieempo en ms de timeout*/
@@ -18,13 +19,14 @@
 #define MPU_PWR_REG         0x6B        /* Dirección de administración del sensor */
 #define I2C_FREQ_HZ         400000      /*Frecuencia de reloj */
 
+
 static const char *TAG_TIMER="TIMER";
 static const char *TAG_I2C = "I2C";
 float DT=4000.000000;                          /* Tiempo de muestreo en us, fs(1KHz MPU6050)*/
 const float accScale    = 2.00000*9.81/32768; 
-const float gyroScale   = 250.00000/32768; 
+const float gyroScale   = (250.00000/32768)*0.002; //0.002 Derivada del tiempo  
 const float A=0.50000, B=0.50000;
-float offset[6]={0.0000000000, 0.0000000000, 0.0000000000, -0.0002029201, 0.0051225499, 0.0041498020};
+float offset_accel[2][3]={{-0.0002029201, 0.0051225499, 0.0041498020}, {-0.0002029201, 0.0051225499, 0.0041498020}};// Dos sensores 3 ejes
 
 typedef struct 
 {
@@ -87,9 +89,6 @@ static esp_err_t mpu_register_write(uint8_t mpu_dir, uint8_t reg_addr, uint8_t d
 //********************************************************************
 
 
-
-
-
 void vTaskTimer( void * pvParameters )
 {
 
@@ -134,28 +133,22 @@ timer_data_t timer_data;
 //*******************************************************************************
 //********************************CONFIGURACIÓN DE I2C_MPU*************************
 
-uint8_t buffer_g1[6];
-uint8_t buffer_a1[6];
-int16_t gi1[3]={0,0,0};
-int16_t ai1[3]={0,0,0};
-float gf1[3]={0.00,0.00,0.00};
-float af1[3]={0.00,0.00,0.00};
-float vg_pos1[3]={0.000000,0.000000,0.000000};
-float va_pos1[3]={0.000000,0.000000,0.000000};
+uint8_t buffer_g[2][6]; // 2 Sensores 6 buffer por sensor
+uint8_t buffer_a[2][6]; // 2 Sensores 6 buffer por sensor
 
+int16_t giro_int[2][3]; // 2 Sensores 3 ejes por sensor
+int16_t acel_int[2][3]; // 2 Sensores 3 ejes por sensor
+float giro_pos[2][3];   // 2 Sensores 3 e por sensor
+float acel_pos[2][3];   // 2 Sensores 3 e por sensor
 
-uint8_t buffer_g2[6];
-uint8_t buffer_a2[6];
-int16_t gi2[3]={0,0,0};
-int16_t ai2[3]={0,0,0};
-float gf2[3]={0.00,0.00,0.00};
-float af2[3]={0.00,0.00,0.00};
-float vg_pos2[3]={0.000000,0.000000,0.000000};
-float va_pos2[3]={0.000000,0.000000,0.000000};
-float ppunto=0.000000;
-float modulo[2]={0.000000,0.000000,0.000000};
-float angulo=0.000000;
-float coseno=0.000000;
+for (int i = 0; i<3; i++)
+for (int j = 0; j<2; j++){
+    giro_int[j][i]=0;
+    acel_int[j][i]=0;
+    giro_pos[j][i]=0.000000;
+    //acel_pos[j][i]=0.000000; //Inicializar en caso de problemas
+}
+
 float cosxy=0.000000;
 float angxy=0.000000;
 
@@ -168,89 +161,48 @@ ESP_ERROR_CHECK(mpu_register_write(MPU_DIR_2, MPU_PWR_REG, 0));
 vTaskDelay(100 / portTICK_PERIOD_MS);
 
 
-uint64_t ciclos=0, cout=0;
+uint64_t ciclos=0;
   for(; ;)
   {
-    //ESP_LOGI(TAG_TIMER, "EJECUCIÓN DE TAREA");  // Task code goes here.
+    
 
     if (xQueueReceive(queue, &timer_data, pdMS_TO_TICKS(1000))) {
-        //ESP_LOGI(TAG_TIMER, "Timer reloaded, count=%llu", timer_data.count);
-        //ESP_LOGI(TAG_TIMER, "Valor %llu", timer_data.value);
-
+        
         /*Lectura de datos del giroscopio*/
-        ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_1, 0x43, buffer_g1, 6));
-        ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_2, 0x43, buffer_g2, 6));
-
-        //ESP_LOGI(TAG_I2C, "Valor de bufer 2: %X %X %X %X %X %X", buffer_g2[0], buffer_g2[1], buffer_g2[2], buffer_g2[3], buffer_g2[4], buffer_g2[5]);
+        ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_1, 0x43, buffer_g[0], 6));
+        ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_2, 0x43, buffer_g[1], 6));
 
         /* Lectura de datos del acelerómetro */
-        ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_1, 0x3b, buffer_a1, 6));
-        ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_2, 0x3b, buffer_a2, 6));
+        ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_1, 0x3b, buffer_a[0], 6));
+        ESP_ERROR_CHECK(mpu_register_read(MPU_DIR_2, 0x3b, buffer_a[1], 6));
 
+        for (int f = 0; f<2; f++)
         for (int i=0, j=0; i<3;i++){
-        ai1[i]=buffer_a1[j]<<8 | buffer_a1[j+1];
-        af1[i]=ai1[i]*accScale;
-        gi1[i]=buffer_g1[j]<<8 | buffer_g1[j+1];
-        gf1[i]=gi1[i]*gyroScale;
-        
-        ai2[i]=buffer_a2[j]<<8 | buffer_a2[j+1];
-        af2[i]=ai2[i]*accScale;
-        gi2[i]=buffer_g2[j]<<8 | buffer_g2[j+1];
-        gf2[i]=gi2[i]*gyroScale;
-        
+        acel_int[f][i]=buffer_a[f][j]<<8 | buffer_a[f][j+1];
+        giro_int[f][i]=buffer_g[f][j]<<8 | buffer_g[f][j+1];
         j+=2;
         }
-
-        va_pos1[0]=atan(af1[0]/sqrt(pow(af1[1], 2.0)+pow(af1[2],2)))*180/3.1416;
-        va_pos1[1]=atan(af1[1]/sqrt(pow(af1[0], 2.0)+pow(af1[2],2)))*180/3.1416;
-        va_pos1[2]=atan(af1[2]/sqrt(pow(af1[1], 2.0)+pow(af1[0],2)))*180/3.1416;
-        vg_pos1[0]+=gf1[0]*0.002-offset[3];
-        vg_pos1[1]+=gf1[1]*0.002-offset[4];
-        vg_pos1[2]+=gf1[2]*0.002-offset[5];
-
-        va_pos2[0]=atan(af2[0]/sqrt(pow(af2[1], 2.0)+pow(af2[2],2)))*-180/3.1416;
-        va_pos2[1]=atan(af2[1]/sqrt(pow(af2[0], 2.0)+pow(af2[2],2)))*-180/3.1416;
-        va_pos2[2]=atan(af2[2]/sqrt(pow(af2[1], 2.0)+pow(af2[0],2)))*-180/3.1416;
         
-        vg_pos2[0]+=gf2[0]*0.002-offset[3];
-        vg_pos2[1]+=gf2[1]*0.002-offset[4];
-        vg_pos2[2]+=gf2[2]*0.002-offset[5];
+        for (int f = 0; f<2; f++)
+        for (int i=0; i<3; i++){
+            giro_pos[f][i]+=giro_int[f][i]*gyroScale-offset_accel[f][i];//0.002 es el la derivada del tiempo.
+            
+        }
 
 
+///HASTA AQUÍ ESTÁ MODIFICADO
 
-        ppunto=va_pos2[0]*va_pos1[0] + va_pos2[1]*va_pos1[1] + va_pos2[2]*va_pos1[2];
-        modulo[0]=sqrt(va_pos1[0]*va_pos1[0] + va_pos1[1]*va_pos1[1] + va_pos1[2]*va_pos1[2]);
-        modulo[1]=sqrt(va_pos2[0]*va_pos2[0] + va_pos2[1]*va_pos2[1] + va_pos2[2]*va_pos2[2]);
-
-        coseno=ppunto/(modulo[0]*modulo[1]);
-        
-        angulo=acos(coseno);
-
-        cosxy=(va_pos2[0]*va_pos1[0] + va_pos2[1]*va_pos1[1])/(sqrt(va_pos1[0]*va_pos1[0] + va_pos1[1]*va_pos1[1])*sqrt(va_pos2[0]*va_pos2[0] + va_pos2[1]*va_pos2[1]));
-
+        cosxy=(acel_int[0][0]*acel_int[1][0] + acel_int[0][1]*acel_int[1][1])/(sqrt(pow(acel_int[0][0],2) + pow(acel_int[0][1],2))*sqrt(pow(acel_int[1][0],2) + pow(acel_int[1][1],2)));
         angxy=acos(cosxy);
-
-        if(coseno<0) {
-            angulo=angulo-180;
-        } 
 
         if(cosxy<0){
             angxy=angxy-180;
         }
 
 
-
-
        if(ciclos==250){
-            //ESP_LOGI(TAG_I2C, "Vectores (%.5f %.5f %.5f). (%.5f %.5f %.5f)", va_pos1[0], va_pos1[1], va_pos1[2], va_pos2[0], va_pos2[1], va_pos2[2]);
-            //ESP_LOGI(TAG_I2C, "Datos= G1 [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos1[0], vg_pos1[1], vg_pos1[2]);
-            //ESP_LOGI(TAG_I2C, "Datos= A2 [%.5f x] - [%.5f y] - [%.5f z] ", va_pos2[0], va_pos2[1], va_pos2[2]);
-            ESP_LOGW(TAG_TIMER, "Valor de ángulo= %.5f | coseno %.5f | ppunto %.5f | modulo1 %.5f | modulo2 %.5f",angulo, coseno, ppunto, modulo[0], modulo[1]);
-            ESP_LOGE(TAG_TIMER, "Valor de ángulo XY= %.5f | coseno %.5f ", angxy, cosxy);
-            //ESP_LOGI(TAG_I2C, "Datos= G2 [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos2[0], vg_pos2[1], vg_pos2[2]);
-            //ESP_LOGI(TAG_I2C, "Datos= G [%.5f x] - [%.5f y] - [%.5f z] ", vg_pos1[3], vg_pos1[4], vg_pos1[5]);
+            ESP_LOGI(TAG_TIMER, "Valor de ángulo XY= %.5f | coseno %.5f ", angxy, cosxy);
             ciclos=0;
-            cout++;
         }
         ciclos++;
         
@@ -274,13 +226,6 @@ ESP_LOGI(TAG_TIMER, "CICLISMO");
     ESP_ERROR_CHECK(ret);
 
     wifi_init_ap();
-
-
-//ESP_ERROR_CHECK(esp_netif_init());
-//ESP_ERROR_CHECK(esp_event_loop_create_default());
-
-//wifi_init_softap();
-//esp_wifi_set_ps(WIFI_PS_NONE);
 
 static uint8_t ucParameterToPass;
 TaskHandle_t xHandle = NULL;

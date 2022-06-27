@@ -3855,7 +3855,7 @@
                     }
                 ],
                 "depends_on": null,
-                "id": "device-configuration-i2c",
+                "id": "dispositivo-i2c",
                 "title": "I2C",
                 "type": "menu"
             },
@@ -3908,7 +3908,7 @@
                             }
                         ],
                         "depends_on": null,
-                        "id": "device-configuration-wifi-punto-de-acceso",
+                        "id": "dispositivo-wifi-punto-de-acceso",
                         "title": "Punto de Acceso",
                         "type": "menu"
                     },
@@ -3946,13 +3946,13 @@
                             }
                         ],
                         "depends_on": null,
-                        "id": "device-configuration-wifi-estaci\u00f3n",
+                        "id": "dispositivo-wifi-estaci\u00f3n",
                         "title": "Estaci\u00f3n",
                         "type": "menu"
                     }
                 ],
                 "depends_on": null,
-                "id": "device-configuration-wifi",
+                "id": "dispositivo-wifi",
                 "title": "Wifi",
                 "type": "menu"
             },
@@ -3980,14 +3980,14 @@
                     }
                 ],
                 "depends_on": null,
-                "id": "device-configuration-mqtt",
+                "id": "dispositivo-mqtt",
                 "title": "MQTT",
                 "type": "menu"
             }
         ],
         "depends_on": null,
-        "id": "device-configuration",
-        "title": "Device Configuration",
+        "id": "dispositivo",
+        "title": "Dispositivo",
         "type": "menu"
     },
     {

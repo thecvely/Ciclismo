@@ -1,4 +1,4 @@
-menu "Device Configuration"
+menu "Dispositivo"
 
     menu "I2C"
     config I2C_SCL
