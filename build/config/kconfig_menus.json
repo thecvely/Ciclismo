@@ -3852,6 +3852,19 @@
                         "range": null,
                         "title": "SDA GPIO Num",
                         "type": "int"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "Puerto I2C del ESP32",
+                        "id": "I2C_PORT",
+                        "name": "I2C_PORT",
+                        "range": [
+                            0,
+                            1
+                        ],
+                        "title": "Puerto I2C",
+                        "type": "int"
                     }
                 ],
                 "depends_on": null,
@@ -3954,6 +3967,37 @@
                 "depends_on": null,
                 "id": "dispositivo-wifi",
                 "title": "Wifi",
+                "type": "menu"
+            },
+            {
+                "children": [
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "The example will connect to this IPV4 address.",
+                        "id": "IPV4_SOCKET_SERVER",
+                        "name": "IPV4_SOCKET_SERVER",
+                        "range": null,
+                        "title": "IPV4 Address",
+                        "type": "string"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "The remote port to which the client example will connect to.",
+                        "id": "PORT_SOCKET_SERVER",
+                        "name": "PORT_SOCKET_SERVER",
+                        "range": [
+                            0,
+                            65535
+                        ],
+                        "title": "Port",
+                        "type": "int"
+                    }
+                ],
+                "depends_on": null,
+                "id": "dispositivo-sockets",
+                "title": "Sockets",
                 "type": "menu"
             },
             {

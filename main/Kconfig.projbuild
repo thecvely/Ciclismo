@@ -3,17 +3,23 @@ menu "Dispositivo"
     menu "I2C"
     config I2C_SCL
         int "SCL GPIO Num"
-        default 6 if IDF_TARGET_ESP32C3 || IDF_TARGET_ESP32C2 || IDF_TARGET_ESP32H2
-        default 19 if IDF_TARGET_ESP32 || IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
+        default 22
         help
             GPIO number for I2C Master clock line.
 
     config I2C_SDA
         int "SDA GPIO Num"
-        default 5 if IDF_TARGET_ESP32C3 || IDF_TARGET_ESP32C2 || IDF_TARGET_ESP32H2
-        default 18 if IDF_TARGET_ESP32 || IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
+        default 21
         help
             GPIO number for I2C Master data line.
+
+    config I2C_PORT
+        int "Puerto I2C"
+        range 0 1
+        default 0
+        help
+            Puerto I2C del ESP32
+
     endmenu
 
     menu "Wifi"
@@ -70,6 +76,21 @@ menu "Dispositivo"
 
     endmenu
 
+    menu "Sockets"
+        config IPV4_SOCKET_SERVER
+            string "IPV4 Address"
+            default "192.168.4.2"
+            help
+                The example will connect to this IPV4 address.
+    
+        config PORT_SOCKET_SERVER
+            int "Port"
+            range 0 65535
+            default 7000
+            help
+                The remote port to which the client example will connect to.
+
+    endmenu
 
     menu "MQTT"
 

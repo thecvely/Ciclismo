@@ -1,3 +1,7 @@
 {
-    "idf.adapterTargetName": "esp32"
+    "idf.adapterTargetName": "esp32",
+    "files.associations": {
+        "*.ejs": "html",
+        "string.h": "c"
+    }
 }
