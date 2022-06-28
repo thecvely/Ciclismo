@@ -86,7 +86,11 @@ static void wifi_event_sta(void* arg, esp_event_base_t event_base, int32_t event
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
         ESP_LOGI(TAG_STA, "Estación conectada:" IPSTR, IP2STR(&event->ip_info.gw));
-        xTaskCreate(tcp_client_task, "tcp_client", 4096, NULL, 5, NULL);
+        
+        static char ip_str[15]="";
+        sprintf(ip_str,IPSTR, IP2STR(&event->ip_info.gw));
+        //String ucParameterToPass;
+        xTaskCreate(tcp_client_task, "tcp_client", 4096, &ip_str, 5, NULL);
         s_retry_num = 0;
         xEventGroupSetBits(s_wifi_event_group, BIT0);
     }

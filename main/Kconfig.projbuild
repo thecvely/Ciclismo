@@ -77,12 +77,6 @@ menu "Dispositivo"
     endmenu
 
     menu "Sockets"
-        config IPV4_SOCKET_SERVER
-            string "IPV4 Address"
-            default "192.168.4.2"
-            help
-                The example will connect to this IPV4 address.
-    
         config PORT_SOCKET_SERVER
             int "Port"
             range 0 65535

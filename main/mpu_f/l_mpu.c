@@ -13,6 +13,7 @@ static const char *TAG_I2C = "I2C";
 float DT=4000.000000;                          /* Tiempo de muestreo en us, fs(1KHz MPU6050)*/ 
 const float gyroScale   = (250.00000/32768)*0.002; //0.002 Derivada del tiempo  
 float offset_accel[2][3]={{-0.0002029201, 0.0051225499, 0.0041498020}, {-0.0002029201, 0.0051225499, 0.0041498020}};// Dos sensores 3 ejes
+static float angxy=0.000000;
 
 typedef struct 
 {
@@ -116,7 +117,7 @@ for (int j = 0; j<2; j++){
 }
 
 float cosxy=0.000000;
-float angxy=0.000000;
+
 
 ESP_ERROR_CHECK(i2c_master_init());
 ESP_LOGI(TAG_I2C, "I2C Inicializado");
@@ -124,7 +125,7 @@ ESP_ERROR_CHECK(mpu_register_write(MPU_DIR_1, MPU_PWR_REG, 0));
 ESP_ERROR_CHECK(mpu_register_write(MPU_DIR_2, MPU_PWR_REG, 0));
 vTaskDelay(100 / portTICK_PERIOD_MS);
 
-uint64_t ciclos=0;
+
   for(; ;)
   {
     if (xQueueReceive(queue, &timer_data, pdMS_TO_TICKS(1000))) {
@@ -156,12 +157,6 @@ uint64_t ciclos=0;
         if(cosxy<0){
             angxy=angxy-180;
         }
-
-       if(ciclos==250){
-            ESP_LOGI(TAG_I2C, "Ángulo de Rodillera= %.5f | coseno %.5f ", angxy, cosxy);
-            ciclos=0;
-        }
-        ciclos++;
         
     } else {
         ESP_LOGW(TAG_TIMER, "Missed one count event");

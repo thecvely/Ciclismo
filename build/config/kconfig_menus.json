@@ -3974,16 +3974,6 @@
                     {
                         "children": [],
                         "depends_on": null,
-                        "help": "The example will connect to this IPV4 address.",
-                        "id": "IPV4_SOCKET_SERVER",
-                        "name": "IPV4_SOCKET_SERVER",
-                        "range": null,
-                        "title": "IPV4 Address",
-                        "type": "string"
-                    },
-                    {
-                        "children": [],
-                        "depends_on": null,
                         "help": "The remote port to which the client example will connect to.",
                         "id": "PORT_SOCKET_SERVER",
                         "name": "PORT_SOCKET_SERVER",

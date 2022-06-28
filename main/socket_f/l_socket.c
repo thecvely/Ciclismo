@@ -6,14 +6,20 @@
 #include "lwip/err.h"
 #include "lwip/sockets.h"
 
+#include "../mpu_f/l_mpu.h"
+
 
 static const char *TAG_SK = "Cliente Socket";
-int sk_output= 1;
+float sk_output= 0.000000;
 
 static void tcp_client_task(void *pvParameters)
 {
+    
+    ESP_LOGI(TAG_SK, "Valor recibido %s", pvParameters);
     char rx_buffer[128];
-    char host_ip[] = CONFIG_IPV4_SOCKET_SERVER;
+    //char host_ip[] = CONFIG_IPV4_SOCKET_SERVER;
+    char host_ip[15];
+    sprintf(host_ip,"%s",pvParameters);
     int addr_family = 0;
     int ip_protocol = 0;
 
@@ -33,6 +39,7 @@ static void tcp_client_task(void *pvParameters)
             if (sock < 0) {
                 ESP_LOGE(TAG_SK, "Unable to create socket: errno %d", errno);
                 break;
+            
             }
             ESP_LOGI(TAG_SK, "Socket created, connecting to %s:%d", host_ip, CONFIG_PORT_SOCKET_SERVER);
 
@@ -47,19 +54,19 @@ static void tcp_client_task(void *pvParameters)
         int size=0;
         while (1) {
 
+            sk_output=angxy;
             if(sk_output==0)
-            size=2;
+            size=9;
             else if(sk_output>0)
-            size=(int)log10(sk_output)+2;
+            size=(int)log10(sk_output)+9;
             else
-            size=(int)log10(abs(sk_output))+3;
+            size=(int)log10(abs(sk_output))+10;
             
             char buffer[size];
 
-            sprintf(buffer, "%d\n", sk_output);
+            sprintf(buffer, "%.6f\n", angxy);
             
-            ESP_LOGI(TAG_SK,"Valor de buffer: %s | tamaño: %d | %d", buffer, sizeof(sk_output), size);
-            
+            ESP_LOGI(TAG_SK,"Valor de buffer Socket %s", buffer);
             
             
             err = send(sock, buffer, size, 0);
@@ -67,7 +74,7 @@ static void tcp_client_task(void *pvParameters)
                 ESP_LOGE(TAG_SK, "Error occurred during sending: errno %d", errno);
                 break;
             }
-            ESP_LOGI(TAG_SK, "Mensaje enviado, esperando respuesta");
+            //ESP_LOGI(TAG_SK, "Mensaje enviado, esperando respuesta");
             //shutdown(sock, 0);
             //close(sock);
             /*int len = recv(sock, rx_buffer, sizeof(rx_buffer) - 1, 0);
@@ -84,7 +91,7 @@ static void tcp_client_task(void *pvParameters)
             }*/
             sk_output++; 
 
-            vTaskDelay(500 / portTICK_PERIOD_MS);
+            vTaskDelay(1000 / portTICK_PERIOD_MS);
         }
 
         if (sock != -1) {

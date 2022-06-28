@@ -373,7 +373,6 @@
     "IDF_TARGET_ARCH": "xtensa",
     "IDF_TARGET_ARCH_XTENSA": true,
     "IDF_TARGET_ESP32": true,
-    "IPV4_SOCKET_SERVER": "192.168.43.56",
     "LCD_ENABLE_DEBUG_LOG": false,
     "LCD_PANEL_IO_FORMAT_BUF_SIZE": 32,
     "LOG_COLORS": true,
