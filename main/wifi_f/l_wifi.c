@@ -33,8 +33,8 @@ static void wifi_event_ap(void* arg, esp_event_base_t event_base, int32_t event_
 
 void wifi_init_ap(void)
 {
-    ESP_ERROR_CHECK(esp_netif_init());
-    ESP_ERROR_CHECK(esp_event_loop_create_default());
+
+    ESP_LOGI(TAG_AP, "Iniciando Access Point");
     esp_netif_create_default_wifi_ap();
 
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
@@ -102,8 +102,7 @@ void wifi_init_sta(void)
 {
     s_wifi_event_group = xEventGroupCreate();
 
-    ESP_ERROR_CHECK(esp_netif_init());
-    ESP_ERROR_CHECK(esp_event_loop_create_default());
+   
     esp_netif_create_default_wifi_sta();
 
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
@@ -141,6 +140,8 @@ void wifi_init_sta(void)
         ESP_LOGI(TAG_STA, "Conectado a :%s", CONFIG_STA_SSID);
     } else if (bits & BIT1) {
         ESP_LOGI(TAG_STA, "Error al conectar a:%s", CONFIG_STA_SSID);
+        wifi_init_ap();
+
     } else {
         ESP_LOGE(TAG_STA, "Evento inesperado");
     }

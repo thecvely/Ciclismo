@@ -6,11 +6,11 @@
 #include "lwip/err.h"
 #include "lwip/sockets.h"
 
-#include "../mpu_f/l_mpu.h"
+#include "../analog_f/l_analog.h"
 
 
 static const char *TAG_SK = "Cliente Socket";
-float sk_output= 0.000000;
+float sk_output= 0.000;
 
 static void tcp_client_task(void *pvParameters)
 {
@@ -32,29 +32,36 @@ static void tcp_client_task(void *pvParameters)
         addr_family = AF_INET;
         ip_protocol = IPPROTO_IP;
 
+        int sock;
+        int err;
         
-        
-
-        int sock =  socket(addr_family, SOCK_STREAM, ip_protocol);
+        ESP_LOGW(TAG_SK, "########## 1 ########");
+        while (1)
+        {            
+            sock =  socket(addr_family, SOCK_STREAM, ip_protocol);
             if (sock < 0) {
-                ESP_LOGE(TAG_SK, "Unable to create socket: errno %d", errno);
-                break;
-            
+                //ESP_LOGE(TAG_SK, "Unable to create socket: errno %d", errno); 
             }
-            ESP_LOGI(TAG_SK, "Socket created, connecting to %s:%d", host_ip, CONFIG_PORT_SOCKET_SERVER);
+            //ESP_LOGI(TAG_SK, "Socket created, connecting to %s:%d", host_ip, CONFIG_PORT_SOCKET_SERVER);
 
-            int err = connect(sock, (struct sockaddr *)&dest_addr, sizeof(struct sockaddr_in6));
+            err = connect(sock, (struct sockaddr *)&dest_addr, sizeof(struct sockaddr_in6));
             if (err != 0) {
-                ESP_LOGE(TAG_SK, "Socket unable to connect: errno %d", errno);
+                //ESP_LOGE(TAG_SK, "Socket unable to connect: errno %d", errno);
+                shutdown(sock, 0);
+                close(sock);
+            }else {
                 break;
+                ESP_LOGI(TAG_SK, "Successfully connected");
             }
-            ESP_LOGI(TAG_SK, "Successfully connected");
+            
+            vTaskDelay(1000 / portTICK_PERIOD_MS);
+        }
 
-
+        ESP_LOGW(TAG_SK, "########## 2 ########");
         int size=0;
         while (1) {
 
-            sk_output=angxy;
+            sk_output=angulo;
             if(sk_output==0)
             size=9;
             else if(sk_output>0)
@@ -64,7 +71,7 @@ static void tcp_client_task(void *pvParameters)
             
             char buffer[size];
 
-            sprintf(buffer, "%.6f\n", angxy);
+            sprintf(buffer, "%.6f\n", angulo);
             
             ESP_LOGI(TAG_SK,"Valor de buffer Socket %s", buffer);
             
@@ -93,12 +100,13 @@ static void tcp_client_task(void *pvParameters)
 
             vTaskDelay(1000 / portTICK_PERIOD_MS);
         }
-
+        ESP_LOGW(TAG_SK, "########## 3 ########");
         if (sock != -1) {
             ESP_LOGE(TAG_SK, "Shutting down socket and restarting...");
             shutdown(sock, 0);
             close(sock);
         }
+        ESP_LOGW(TAG_SK, "########## 4 ########");
     }
     vTaskDelete(NULL);
 }
