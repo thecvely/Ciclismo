@@ -4,6 +4,7 @@
 #include "esp_system.h"
 #include "nvs_flash.h"
 #include "nvs.h"
+#include "driver/gpio.h"
 
 
 void storage_write_sta(char *name, char *value){
@@ -69,6 +70,34 @@ return value;
 }
 
 
+void memory_reset(void){
+
+gpio_set_direction(GPIO_NUM_14, GPIO_MODE_INPUT);
+gpio_pullup_en(GPIO_NUM_14);
+
+
+uint8_t count=0;
+for (; ;)
+{
+    if(!gpio_get_level(GPIO_NUM_14)){
+    ESP_LOGI("Reset", "Reset activado");
+    count++;
+    if(count==5){
+        ESP_LOGE("Reset", "Reset ejecuatado");
+        storage_write_sta("sta_ssid",CONFIG_STA_SSID);
+        storage_write_sta("sta_pass",CONFIG_STA_PASSWORD);
+        storage_write_sta("ap_ssid",CONFIG_AP_SSID);
+        storage_write_sta("ap_pass",CONFIG_AP_PASSWORD);
+        esp_restart();
+    }
+    }else
+    ESP_LOGI("Reset", "Reset desactivado");
+    vTaskDelay(pdMS_TO_TICKS(1000));
+
+}
+
+
+}
 
 void storage_init(void)
 {

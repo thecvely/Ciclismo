@@ -128,10 +128,10 @@ static esp_err_t save_post_handler(httpd_req_t *req){
 
     if(redt[0]=='0'){
         storage_write_sta("sta_ssid",ssid);
-        storage_write_sta("sta_ssid",pass);
+        storage_write_sta("sta_pass",pass);
     }else if(redt[0]=='1'){
         storage_write_sta("ap_ssid",ssid);
-        storage_write_sta("ap_ssid",pass);
+        storage_write_sta("ap_pass",pass);
     }
 
     esp_restart();

@@ -39,6 +39,7 @@ TaskHandle_t xHandle = NULL;
 
 xTaskCreate( vtaskAnalog, "MPU_TIMER", 8196, &ucParameterToPass, tskIDLE_PRIORITY, &xHandle );
 configASSERT( xHandle );
+xTaskCreate( memory_reset, "MEMORY_RESET", 2048, NULL,tskIDLE_PRIORITY,NULL);
 
 ESP_LOGW("MAIN", "FIN DE TAREA");
 

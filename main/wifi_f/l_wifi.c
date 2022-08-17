@@ -62,7 +62,6 @@ void wifi_init_ap(void)
     ESP_ERROR_CHECK(esp_event_handler_instance_register(IP_EVENT, ESP_EVENT_ANY_ID, &ip_event_ap,NULL,NULL));
     
     char *ssid=storage_read_sta("ap_ssid");
-    ESP_LOGW("AP"," SSID: %s",ssid);
     char *pass=storage_read_sta("ap_pass");
 
     wifi_config_t wifi_config = {
@@ -92,8 +91,8 @@ void wifi_init_ap(void)
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_AP, &wifi_config));
     ESP_ERROR_CHECK(esp_wifi_start());
 
-    ESP_LOGI(TAG_AP, "Configuración de AP finalizada. SSID:%s password:%s channel:%d",
-             CONFIG_AP_SSID, CONFIG_AP_PASSWORD, CONFIG_AP_CHANNEL);
+    ESP_LOGW(TAG_AP, "Configuración de AP finalizada. SSID:%s password:%s channel:%d",
+             wifi_config.ap.ssid, wifi_config.ap.password, wifi_config.ap.channel);
 }
 
 
@@ -185,17 +184,3 @@ void wifi_init_sta(void)
     }
 
 }
-
-
-
-/*
-static void event_ap_sta(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
-{
-
-
-}
-
-void wifi_init_ap_sta(void)
-{
-
-}*/
