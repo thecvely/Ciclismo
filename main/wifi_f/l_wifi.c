@@ -9,10 +9,26 @@
 
 
 
-static const char *TAG_AP = "Wifi Access Point";
-static const char *TAG_STA = "wifi station";
+static const char *TAG_AP = "Access Point";
+static const char *TAG_STA = "Estación";
 static EventGroupHandle_t s_wifi_event_group;
 static int s_retry_num = 0;
+
+
+static void ip_event_ap(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data){
+
+    if(event_base == IP_EVENT && event_id==IP_EVENT_AP_STAIPASSIGNED){
+
+        ip_event_ap_staipassigned_t* event = ( ip_event_ap_staipassigned_t*) event_data;
+        ESP_LOGI(TAG_STA, "Estación conectada:" IPSTR, IP2STR(&event->ip));
+
+        static char ip_str[15]="";
+        sprintf(ip_str,IPSTR, IP2STR(&event->ip));
+        xTaskCreate(tcp_client_task, "tcp_client", 4096, &ip_str, 5, NULL);
+    
+    }
+
+}
 
 /*Código del Access Point*/
 static void wifi_event_ap(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
@@ -22,6 +38,7 @@ static void wifi_event_ap(void* arg, esp_event_base_t event_base, int32_t event_
     if (event_id == WIFI_EVENT_AP_STACONNECTED) {
         wifi_event_ap_staconnected_t* event = (wifi_event_ap_staconnected_t*) event_data;
         ESP_LOGI(TAG_AP, "station "MACSTR" join, AID=%d", MAC2STR(event->mac), event->aid);
+
 
     } else if (event_id == WIFI_EVENT_AP_STADISCONNECTED) {
         wifi_event_ap_stadisconnected_t* event = (wifi_event_ap_stadisconnected_t*) event_data;
@@ -42,6 +59,7 @@ void wifi_init_ap(void)
     ESP_ERROR_CHECK(esp_wifi_init(&cfg));
 
     ESP_ERROR_CHECK(esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_ap, NULL, NULL));
+    ESP_ERROR_CHECK(esp_event_handler_instance_register(IP_EVENT, ESP_EVENT_ANY_ID, &ip_event_ap,NULL,NULL));
     
     char *ssid=storage_read_sta("ap_ssid");
     ESP_LOGW("AP"," SSID: %s",ssid);
@@ -88,20 +106,18 @@ static void wifi_event_sta(void* arg, esp_event_base_t event_base, int32_t event
         if (s_retry_num < CONFIG_STA_MAXIMUM_RETRY) {
             esp_wifi_connect();
             s_retry_num++;
-            ESP_LOGI(TAG_STA, "Reconectando con AP");
+            ESP_LOGW(TAG_STA, "Reconectando con AP");
         } else {
             xEventGroupSetBits(s_wifi_event_group, BIT1);
-            ESP_LOGW(TAG_STA, "Error al conectar a:%s", CONFIG_STA_SSID);
+            ESP_LOGE(TAG_STA, "Error al conectar a:%s", CONFIG_STA_SSID);
             wifi_init_ap();
         }
-        ESP_LOGI(TAG_STA,"No se puede conectar");
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
         ESP_LOGI(TAG_STA, "Estación conectada:" IPSTR, IP2STR(&event->ip_info.gw));
         
         static char ip_str[15]="";
         sprintf(ip_str,IPSTR, IP2STR(&event->ip_info.gw));
-        //String ucParameterToPass;
         xTaskCreate(tcp_client_task, "tcp_client", 4096, &ip_str, 5, NULL);
         s_retry_num = 0;
         xEventGroupSetBits(s_wifi_event_group, BIT0);
@@ -135,13 +151,9 @@ void wifi_init_sta(void)
 
 
     char *ssid=storage_read_sta("sta_ssid");
-    ESP_LOGW("STA"," %s",ssid);
+        ESP_LOGI("SSID:","%s",ssid);
     char *pass=storage_read_sta("sta_pass");
-    ESP_LOGW("STA"," %s",pass);
-
-    
-
-    
+        ESP_LOGI("PASS:","%s",pass);
     
     wifi_config_t wifi_config = {
         .sta = {
@@ -152,21 +164,21 @@ void wifi_init_sta(void)
     };
 
     strlcpy((char *) wifi_config.sta.ssid, ssid, sizeof(wifi_config.sta.ssid));
-    strlcpy((char *) wifi_config.sta.ssid, pass,sizeof(wifi_config.sta.password));
+    strlcpy((char *) wifi_config.sta.password, pass, sizeof(wifi_config.sta.password));
 
 
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA) );
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config) );
     ESP_ERROR_CHECK(esp_wifi_start() );
 
-    ESP_LOGI(TAG_STA, "Configuración de estación Wifi finalizada");
+    ESP_LOGI(TAG_STA, "Configuración finalizada");
 
     EventBits_t bits = xEventGroupWaitBits(s_wifi_event_group, BIT0 | BIT1, pdFALSE, pdFALSE, portMAX_DELAY);
 
     if (bits & BIT0) {
-        ESP_LOGI(TAG_STA, "Conectado a :%s", CONFIG_STA_SSID);
+        ESP_LOGI(TAG_STA, "Conectado a :%s con password%s", wifi_config.sta.ssid, wifi_config.sta.password);
     } else if (bits & BIT1) {
-        ESP_LOGI(TAG_STA, "Error al conectar a:%s", CONFIG_STA_SSID);
+        ESP_LOGW(TAG_STA, "Error al conectar a:%s con password%s", wifi_config.sta.ssid, wifi_config.sta.password);
 
     } else {
         ESP_LOGE(TAG_STA, "Evento inesperado");

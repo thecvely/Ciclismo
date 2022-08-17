@@ -15,7 +15,7 @@
 
 void app_main(void)
 {
-ESP_LOGI("Main", "Aplicación Ciclismo");
+ESP_LOGI("\nMain", "Aplicación Ciclismo");
 
 
 storage_init();
