@@ -83,7 +83,7 @@ for (; ;)
     ESP_LOGI("Reset", "Reset activado");
     count++;
     if(count==5){
-        ESP_LOGE("Reset", "Reset ejecuatado");
+        ESP_LOGE("Reset", "Reset ejecutado");
         storage_write_sta("sta_ssid",CONFIG_STA_SSID);
         storage_write_sta("sta_pass",CONFIG_STA_PASSWORD);
         storage_write_sta("ap_ssid",CONFIG_AP_SSID);

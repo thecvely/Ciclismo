@@ -1027,3 +1027,17 @@
 4336	4440	1660770090	.bin_timestamp	a16d441221f1ef1
 4440	4469	0	esp-idf/esptool_py/CMakeFiles/app_check_size	9954ab241bb7b657
 4469	21192	0	CMakeFiles/flash	71d8b05be295c4af
+49	2824	1660770972	build.ninja	159b12c3e21f94b0
+19	101	1658865027	bootloader-prefix/src/bootloader-stamp/bootloader-build	67d7644f193af26e
+19	101	1658865027	bootloader/bootloader.elf	67d7644f193af26e
+19	101	1658865027	bootloader/bootloader.bin	67d7644f193af26e
+19	101	1658865027	bootloader/bootloader.map	67d7644f193af26e
+19	116	1660770972	esp-idf/app_update/CMakeFiles/__idf_app_update.dir/esp_app_desc.c.obj	666ad3e22f053b89
+116	130	1660770972	esp-idf/app_update/libapp_update.a	23327f76aaffffb8
+130	338	1660770972	esp-idf/main/CMakeFiles/__idf_main.dir/ciclismo.c.obj	c629912002380130
+338	347	1660770972	esp-idf/main/libmain.a	3cd346a521ac10d9
+347	2839	1660770975	esp-idf/esp_system/ld/sections.ld	4c0d3a26bb742fb3
+2839	5169	1660770977	ciclismo.elf	1142550b730538e
+5169	5279	1660770977	.bin_timestamp	a16d441221f1ef1
+5279	5309	0	esp-idf/esptool_py/CMakeFiles/app_check_size	9954ab241bb7b657
+5309	22089	0	CMakeFiles/flash	71d8b05be295c4af
