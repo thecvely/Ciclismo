@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">
+    <title>Responsive Side Menu &ndash; Layout Examples &ndash; Pure</title>
+    <link rel="stylesheet" href="/style">
+</head>
+<body>
+
+    <div id="main">
+        <div class="header" style="background-color:#222;">
+            <h1 style="color: cornsilk;">Ciclismo</h1>
+            <h2>Configurar Punto de Acceso</h2>
+        </div>
+
+        <div class="content">
+
+            <h2 class="content-subhead">Configurar Estación</h2>
+            <form class="pure-form" action="save" method="post">
+                <p>Nombre de la Red</p>
+                <input type="text" class="pure-input-rounded" name="ssid"/>
+                <p>Contraseña</p>
+                <input type="text" class="pure-input-rounded" name="pass"/>
+                <br>
+                <input type="hidden" name="device" id="" value="1&">
+                <br>
+                <button type="submit" class="pure-button">Aplicar</button>
+            </form>
+
+        </div>
+    </div>
+
+</body>
+</html>

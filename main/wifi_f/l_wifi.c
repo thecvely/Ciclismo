@@ -5,6 +5,7 @@
 #include "lwip/err.h"
 #include "lwip/sys.h"
 #include "socket_f/l_socket.h"
+#include "mem_f/l_mem.h"
 
 
 
@@ -41,11 +42,15 @@ void wifi_init_ap(void)
     ESP_ERROR_CHECK(esp_wifi_init(&cfg));
 
     ESP_ERROR_CHECK(esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_ap, NULL, NULL));
+    
+    char *ssid=storage_read_sta("ap_ssid");
+    ESP_LOGW("AP"," SSID: %s",ssid);
+    char *pass=storage_read_sta("ap_pass");
 
     wifi_config_t wifi_config = {
         .ap = {
-            .ssid = CONFIG_AP_SSID,
-            .ssid_len = strlen(CONFIG_AP_SSID),
+            .ssid = "",
+            .ssid_len = 0,
             .channel = CONFIG_AP_CHANNEL,
             .password = CONFIG_AP_PASSWORD,
             .max_connection = CONFIG_AP_MAX_STA_CONN,
@@ -55,6 +60,11 @@ void wifi_init_ap(void)
             },
         },
     };
+
+
+    strlcpy((char *) wifi_config.ap.ssid, ssid, sizeof(wifi_config.ap.ssid));
+    strlcpy((char *) wifi_config.ap.password, pass, sizeof(wifi_config.ap.password));
+    wifi_config.ap.ssid_len=strlen(ssid);
 
     if (strlen(CONFIG_AP_PASSWORD) == 0) {
         wifi_config.ap.authmode = WIFI_AUTH_OPEN;
@@ -81,6 +91,8 @@ static void wifi_event_sta(void* arg, esp_event_base_t event_base, int32_t event
             ESP_LOGI(TAG_STA, "Reconectando con AP");
         } else {
             xEventGroupSetBits(s_wifi_event_group, BIT1);
+            ESP_LOGW(TAG_STA, "Error al conectar a:%s", CONFIG_STA_SSID);
+            wifi_init_ap();
         }
         ESP_LOGI(TAG_STA,"No se puede conectar");
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
@@ -121,13 +133,28 @@ void wifi_init_sta(void)
                                                         NULL,
                                                         &instance_got_ip));
 
+
+    char *ssid=storage_read_sta("sta_ssid");
+    ESP_LOGW("STA"," %s",ssid);
+    char *pass=storage_read_sta("sta_pass");
+    ESP_LOGW("STA"," %s",pass);
+
+    
+
+    
+    
     wifi_config_t wifi_config = {
         .sta = {
-            .ssid = CONFIG_STA_SSID,
-            .password = CONFIG_STA_PASSWORD,
+            .ssid = "",
+            .password = "",
 	     //.threshold.authmode = WIFI_AUTH_WPA2_WPA3_PSK,
         },
     };
+
+    strlcpy((char *) wifi_config.sta.ssid, ssid, sizeof(wifi_config.sta.ssid));
+    strlcpy((char *) wifi_config.sta.ssid, pass,sizeof(wifi_config.sta.password));
+
+
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA) );
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config) );
     ESP_ERROR_CHECK(esp_wifi_start() );
@@ -140,7 +167,6 @@ void wifi_init_sta(void)
         ESP_LOGI(TAG_STA, "Conectado a :%s", CONFIG_STA_SSID);
     } else if (bits & BIT1) {
         ESP_LOGI(TAG_STA, "Error al conectar a:%s", CONFIG_STA_SSID);
-        wifi_init_ap();
 
     } else {
         ESP_LOGE(TAG_STA, "Evento inesperado");
@@ -149,6 +175,8 @@ void wifi_init_sta(void)
 }
 
 
+
+/*
 static void event_ap_sta(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
 {
 
@@ -158,4 +186,4 @@ static void event_ap_sta(void* arg, esp_event_base_t event_base, int32_t event_i
 void wifi_init_ap_sta(void)
 {
 
-}
+}*/

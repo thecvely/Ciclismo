@@ -16,7 +16,7 @@ static void tcp_client_task(void *pvParameters)
 {
     
     ESP_LOGI(TAG_SK, "Valor recibido %s", pvParameters);
-    char rx_buffer[128];
+    //char rx_buffer[128];
     //char host_ip[] = CONFIG_IPV4_SOCKET_SERVER;
     char host_ip[15];
     sprintf(host_ip,"%s",pvParameters);

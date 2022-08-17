@@ -12,7 +12,7 @@ static const adc_channel_t channel = ADC_CHANNEL_6;     //GPIO34 if ADC1, GPIO14
 static const adc_bits_width_t width = ADC_WIDTH_BIT_12;
 static const adc_atten_t atten = ADC_ATTEN_DB_6;
 static float angulo=0.000;
-float escala=0.035349568;
+float escala=0.0490446;
 
 
 static void check_efuse(void)
@@ -59,14 +59,14 @@ void vtaskAnalog(void)
 
     //Continuously sample ADC1
     while (1) {
-        uint32_t adc_reading = 0;
+        int32_t adc_reading = 0;
         //Multisampling
         for (int i = 0; i < NO_OF_SAMPLES; i++) {
                 adc_reading += adc1_get_raw((adc1_channel_t)channel);
         }
         adc_reading /= NO_OF_SAMPLES;
         adc_reading =4095-adc_reading;
-        angulo=escala*adc_reading;
+        angulo=escala*(adc_reading-1545)+90;
         //Convert adc_reading to voltage in mV
         //uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
         printf("Raw: %d\tVoltage: %.4f°\n", adc_reading, angulo);
